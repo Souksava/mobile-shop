@@ -1,0 +1,60 @@
+.font18{
+    font-size: 18px;
+    color: black;
+    font-family: "phetsarath OT";
+}
+.font14{
+    font-size: 14px;
+    color: black;
+    font-family: "phetsarath OT";
+}
+.font12{
+    font-size: 12px;
+    color: black;
+    font-family: "phetsarath OT";
+}
+.header{
+    width: 100%; 
+    height:50px;
+    background-color: #35AADE; 
+    margin: 0 auto;
+}
+.fonthead{
+    font-size: 12px;
+    font-family: "phetsarath OT";
+}
+.clearfix{
+    clear: both;
+}
+.tapbar{
+    padding-top: 10px;
+    float:left;
+    color:white;
+    width:33%;
+}
+div a:hover{
+    color: #35AADE;
+    text-decoration: none;
+}
+div a{
+    text-decoration: none;
+}
+.imagelist{
+    z-index: 3;
+     position: absolute; 
+     margin-top: -5px;
+}
+.monitorsell{
+    height: 200px;
+    width: 100%; 
+    background-color: black;
+     color: #35AADE;
+     font-size: 115px;
+     font-family: "Phetsarath OT";
+}
+.test{
+    color: rgb(19, 155, 245);
+}
+
+
+
