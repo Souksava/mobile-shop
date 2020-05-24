@@ -27,6 +27,7 @@
     <link rel="icon" href="../../image/<?php echo $rowshop['img_title']; ?>">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awsome.min.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body >
@@ -37,7 +38,7 @@
     $resultsell = mysqli_query($link,$sqlsell);
     $rowsell = mysqli_fetch_array($resultsell,MYSQLI_ASSOC);
     ?>
-    <div class="container-fluid font12">
+    <div class="container-fluid font12" id="sell">
         <div>
             <img src="../../image/<?php echo $rowshop['img_path']; ?>" width="100px;" alt=""><br><br>
         </div>
@@ -64,12 +65,12 @@
                             <td> 
                                 <?php echo $rowshow['qty']; ?> <?php echo $rowshow['unit_name']; ?>
                             </td>
-                            <td >
+                            <td>
                                 <h6 style="color: #CE3131;">ລາຄາ <?php echo number_format($rowshow['newprice'],2); ?> ກີບ</h6>
                                <h7>ລາຄາປົກກະຕິ <?php echo number_format($rowshow['price'],2); ?> ກີບ</h7>
                                <div style="color: #7E7C7C;font-size: 12px;">ສ່ວນຫຼຸດ <?php echo number_format($rowshow['promotion'],2); ?>  ກີບ (<?php echo number_format($rowshow['perzen'],2); ?> %)</div>
                             </td>
-                            <td> 
+                            <td > 
                                 <h6 style="color: #CE3131;"><?php echo number_format($rowshow['total'],2); ?> ກີບ</h6>
                             </td>
                         </tr>
@@ -162,7 +163,21 @@
     </div>
       <!-- body -->
   </body>
- 
+    <script type="text/javascript">
+        function loadDoc() {
+            setInterval(function(){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("sell").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "board_sell.php", true);
+                xhttp.send();
+            },1000);
+        }
+        loadDoc();
+    </script>
 </html>
 <?php
    } 
