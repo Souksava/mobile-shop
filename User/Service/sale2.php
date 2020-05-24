@@ -139,6 +139,9 @@
         $amount = $_POST['amount'];
         $cupon = $_POST['cupon'];
         $discount = $_POST['discount'];
+        if(trim($discount) == ""){
+            $discount = 0;
+        }
         if(trim($cupon) == ""){
             $cupon = "0";
         }
