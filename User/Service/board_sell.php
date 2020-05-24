@@ -136,9 +136,10 @@
                                                             ທະນາຄານ<br>
                                                             <p style="font-size: 12px;">
                                                                 <?php echo $rowpayment['card_id']; ?>
+                                                                
                                                             </p>
                                                     </div>
-                                                    <div align="right" class="col-xs-12 col-sm-6" style="font-size: 11px;">
+                                                    <div align="right" class="col-xs-12 col-sm-6" style="font-size: 10px;">
                                                         <img src="../../image/<?php echo $rowpayment['img_path']; ?>" width="80px;" alt=""><br><br>
                                                         <?php
                                                             echo $rowpayment['ac_name'];echo"<br>";

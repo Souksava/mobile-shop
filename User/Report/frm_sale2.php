@@ -125,7 +125,7 @@
                             <div class="card-body">
                                 <h5 align="center" class="card-title"></h5>
                                 <p class="card-text">
-                                    <form action="bill.php" id="form1" method="POST">
+                                    <form action="bill.php" id="form1" method="POST" target="_blank">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 ເລກທີບິນ: <?php echo $rowsell['sell_id'];?>

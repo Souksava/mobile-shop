@@ -63,7 +63,7 @@
         $resultcompany = mysqli_query($link,$sqlcompany);
         $rowcompany = mysqli_fetch_array($resultcompany, MYSQLI_ASSOC);
     ?>
-    <form action="Report_Order.php" method="POST" id="form1">
+    <form action="Report_Order.php" method="POST" id="form1" target="_blank">
     <div class="container font14">
         <div class="row">
             <div style="float: left;width: 50%;">

@@ -11,7 +11,7 @@ function ShowData(){
     $order_id = $_POST['order_id'];
     $rate = $_POST['rate'];
     if(isset($_POST['btn'])){
-        $sql = "select pro_name,unit_name,cated_name,brand_name,d.qty,d.price,d.qty*d.price as total from orderdetail d left join orders o on d.order_id=o.order_id left join product p on d.pro_id=p.pro_id left join categorydetail l on p.cated_id=l.cated_id left join brand b on p.brand_id=b.brand_id left join unit u on p.unit_id=u.unit_id where d.order_id='$order_id';";
+        $sql = "select pro_name,unit_name,cated_name,brand_name,d.qty,d.price,d.qty*d.price as total from orderdetail d left join orders o on d.order_id=o.order_id left join product p on d.pro_id=p.pro_id left join categorydetail l on p.cated_id=l.cated_id left join brand b on p.brand_id=b.brand_id left join unit u on p.unit_id=u.unit_id where d.order_id='$order_id' and o.status='ອະນຸມັດ';";
         $result = mysqli_query($link,$sql);
         $Bill = 0;
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
@@ -21,14 +21,14 @@ function ShowData(){
                     <td align="center">'.$Bill.'</td>
                     <td align="left">'.$row["cated_name"].' '.$row["brand_name"].' '.$row["pro_name"].'</td>
                     <td align="center">'.$row["qty"].'</td>
-                    <td align="left">'.number_format($row["price"],2).' '.$rate.'</td>
+                    <td align="center">'.number_format($row["price"],2).' '.$rate.'</td>
                     <td align="center">'.number_format($row["total"],2).' '.$rate.'</td>
                 </tr>
             
             ';
           
         }
-        $sqlAmount = "select sum(qty*price) as amount from orderdetail where order_id='$order_id';";
+        $sqlAmount = "select sum(qty*price) as amount from orderdetail d left join orders o on d.order_id=o.order_id where d.order_id='$order_id' and o.status='ອະນຸມັດ';";
         $result7 = mysqli_query($link, $sqlAmount);
         $rowAmount = mysqli_fetch_array($result7, MYSQLI_ASSOC);
         $output .='

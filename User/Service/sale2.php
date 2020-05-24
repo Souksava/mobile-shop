@@ -219,7 +219,7 @@
                                                     echo"<label style='color: #7E7C7C;font-size: 12px;'>* ບໍ່ມີຄູປ໋ອງສ່ວນລົດ</label>";
                                                 }
                                                 else{
-                                                    echo"<label style='color: #7E7C7C;font-size: 12px;'>ຄູປ໋ອງສ່ວນລົດ:".number_format($cupon_price,2)." ກີຍ</label>";
+                                                    echo"<label style='color: #7E7C7C;font-size: 12px;'>ຄູປ໋ອງສ່ວນລົດ:".number_format($cupon_price,2)." ກີບ</label>";
                                                 }
                                             ?>         
                                         </div>

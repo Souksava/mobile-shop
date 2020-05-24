@@ -152,7 +152,7 @@
     <div class="container-fluid font12">
 		<div class="row">
 			<div class="col-md-8">
-                ລາຍການສິນຄ້າ
+                <a href="board_sell.php" target="_blank">ລາຍການສິນຄ້າ</a>
                 <div class="table-responsive">
                     <table class="table" style="width: 900px;">
                         <tr>

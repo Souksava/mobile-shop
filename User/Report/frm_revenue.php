@@ -75,7 +75,7 @@
     ?>
         <div class="container font14">
             <div>
-                <form action="Report_revenue.php" method="POST" id="formReport">
+                <form action="Report_revenue.php" method="POST" id="formReport" target="_blank">
                     <input type="hidden" name="name" value="<?php echo $rowshop['name']; ?>">
                     <input type="hidden" name="address" value="<?php echo $rowshop['address']; ?>">
                     <input type="hidden" name="tel" value="<?php echo $rowshop['tel']; ?>">
@@ -166,7 +166,7 @@
     ?>
         <div class="container font14">
             <div>
-                <form action="Report_revenue.php" method="POST" id="formReport">
+                <form action="Report_revenue.php" method="POST" id="formReport" target="_blank">
                     <input type="hidden" name="name" value="<?php echo $rowshop['name']; ?>">
                     <input type="hidden" name="address" value="<?php echo $rowshop['address']; ?>">
                     <input type="hidden" name="tel" value="<?php echo $rowshop['tel']; ?>">

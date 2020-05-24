@@ -94,7 +94,7 @@ $content = '
             <table style="font-size: 12px;">
                 <tr>
                     <th align="left" style="width: 30px;">#</th>
-                    <th align="left" style="width: 40%;">ສີນຄ້າ</th>
+                    <th align="left" style="width: 250px;">ສີນຄ້າ</th>
                     <th align="left" style="width: 140px;">ຈຳນວນ</th>
                     <th align="left" style="width: 160px;">ລວມ</th>
                 </tr>

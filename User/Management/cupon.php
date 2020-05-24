@@ -68,7 +68,7 @@
                                         <div class="row" align="left">
                                             <div class="col-md-12 col-sm-6 form-group">
                                                 <label>ລະຫັດຄູປ໋ອງ</label>
-                                                <input type="text" name="cupon_key" class="form-control" placeholder="ຊື່ປະເພດສິນຄ້າ">
+                                                <input type="text" name="cupon_key" class="form-control" placeholder="ລະຫັດຄູປ໋ອງ">
                                             </div>
                                             <div class="col-md-12 col-sm-6 form-group">
                                                 <label>ຈຳນວນ</label>

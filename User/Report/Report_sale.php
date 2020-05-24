@@ -10,7 +10,7 @@ function ShowData(){
     $Date = date("Y-m-d",$datenow);
     $Search = "%".$_POST['Search']."%";
     if(isset($_POST['btnAll'])){
-        $sql = "select sell_id,cus_name,sell_date,sell_time,amount,s.status,status_cash,emp_name from sell s left join customers c on s.cus_id=c.cus_id left join employees e on s.emp_id=e.emp_id order by s.sell_id asc;";
+        $sql = "select sell_id,cus_name,sell_date,sell_time,amount,status_cash,emp_name from sell s left join customers c on s.cus_id=c.cus_id left join employees e on s.emp_id=e.emp_id order by s.sell_id asc;";
         $result = mysqli_query($link,$sql);
         $Bill = 0;
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
@@ -24,7 +24,6 @@ function ShowData(){
                     <td align="center">'.number_format($row["amount"],2).'</td>
                     <td align="center">'.$row["sell_date"].'</td>
                     <td align="center">'.$row["sell_time"].'</td>
-                    <td align="center">'.$row["status"].'</td>
                     <td align="center">'.$row["status_cash"].'</td>
                 </tr>
             
@@ -36,7 +35,7 @@ function ShowData(){
         $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
         $output .='
         <tr class="fontblack18">
-            <td colspan="7" align="right"><h3><b>ຍອມລວມ (ລວມພາສີມູນຄ່າເພີ່ມ) : </b></h3></td>
+            <td colspan="6" align="right"><h3><b>ຍອມລວມ (ລວມພາສີມູນຄ່າເພີ່ມ) : </b></h3></td>
             <td colspan="3" align="right"><h3><b>'.number_format($row2["amount"],2).' ກີບ</h3> </b></td>
         </tr>    
                 ';
@@ -46,7 +45,7 @@ function ShowData(){
         $Search = $_POST['Search'];
         $date1 = $_POST['date1'];
         $date2 = $_POST['date2'];
-        $sql = "select sell_id,cus_name,sell_date,sell_time,amount,s.status,status_cash,emp_name from sell s left join customers c on s.cus_id=c.cus_id left join employees e on s.emp_id=e.emp_id where s.sell_id='$Search' or emp_name='$Search' or cus_name='$Search' or sell_date between '$date1' and '$date2' order by s.sell_id asc;";
+        $sql = "select sell_id,cus_name,sell_date,sell_time,amount,status_cash,emp_name from sell s left join customers c on s.cus_id=c.cus_id left join employees e on s.emp_id=e.emp_id where s.sell_id='$Search' or emp_name='$Search' or cus_name='$Search' or sell_date between '$date1' and '$date2' order by s.sell_id asc;";
         $result = mysqli_query($link,$sql);
         $Bill = 0;
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
@@ -60,7 +59,6 @@ function ShowData(){
                 <td align="center">'.number_format($row["amount"],2).'</td>
                 <td align="center">'.$row["sell_date"].'</td>
                 <td align="center">'.$row["sell_time"].'</td>
-                <td align="center">'.$row["status"].'</td>
                 <td align="center">'.$row["status_cash"].'</td>
             </tr>
             ';
@@ -71,7 +69,7 @@ function ShowData(){
         $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
         $output .='
         <tr class="fontblack18">
-            <td colspan="7" align="right"><h3><b>ຍອມລວມ (ລວມພາສີມູນຄ່າເພີ່ມ) : </b></h3></td>
+            <td colspan="6" align="right"><h3><b>ຍອມລວມ (ລວມພາສີມູນຄ່າເພີ່ມ) : </b></h3></td>
             <td colspan="3" align="right"><h3><b>'.number_format($row2["amount"],2).' ກີບ</h3> </b></td>
         </tr>    
                 ';
@@ -120,7 +118,6 @@ $content = '
                     <th style="width: 120px;">ຍອດລວມ</th>
                     <th style="width: 100px;">ວັນທີ</th>
                     <th style="width: 100px;">ເວລາ</th>
-                    <th style="width: 100px;">ສະຖານະ</th>
                     <th style="width: 100px;">ການຈ່າຍເງິນ</th>
                 </tr>
                 '.ShowData().'

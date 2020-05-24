@@ -249,8 +249,8 @@
                             echo"</script>";
                         }
                         else {
-                            $sqlupdate = "update product set qty=qty+'$qty' where pro_id='$pro_id' and emp_id='$emp_id';";
-                            $resultupdate = mysqli_query($link,$sqlupdate);
+                            $sqlupdate2 = "update product set qty=qty+'$qty' where pro_id='$pro_id';";
+                            $resultupdate2 = mysqli_query($link,$sqlupdate2);
                             echo"<script>";
                             echo"window.location.href='import2.php';";
                             echo"</script>";
