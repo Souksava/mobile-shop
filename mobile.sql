@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 19, 2020 at 10:14 AM
+-- Generation Time: May 24, 2020 at 11:14 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.13
 
@@ -134,7 +134,7 @@ CREATE TABLE `cupon` (
 
 INSERT INTO `cupon` (`cupon_key`, `qty`, `price`) VALUES
 ('1', 0, '50000.00'),
-('sdfsdfsdf', 5, '13000.00');
+('sdfsdfsdf', 3, '13000.00');
 
 -- --------------------------------------------------------
 
@@ -227,7 +227,8 @@ INSERT INTO `imports` (`imp_id`, `imp_bill`, `order_id`, `sup_id`, `emp_id`, `pr
 (3, '1', 2, 1, '124', '1145018000002', 10, '90000.00', '2020-05-08', '17:54:28', ''),
 (4, '1', 2, 1, '124', '1093025000002', 1, '90000.00', '2020-06-09', '16:25:37', ''),
 (5, '1', 2, 1, '124', '1679005000003', 4, '10000.00', '2020-07-09', '16:26:09', ''),
-(6, '1001', 2, 1, '124', '1093025000002', 1, '90000.00', '2020-05-14', '21:56:51', '');
+(6, '1001', 2, 1, '124', '1093025000002', 1, '90000.00', '2020-05-14', '21:56:51', ''),
+(7, '0560', 6, 2, '124', 'PGDC00016', 4, '50000.00', '2020-05-24', '11:31:45', 'ເຄື່ອງມາບໍ່ຄົບ ຍັງ 1 ອັນ');
 
 -- --------------------------------------------------------
 
@@ -301,7 +302,8 @@ INSERT INTO `orderdetail` (`detail_id`, `pro_id`, `qty`, `price`, `order_id`) VA
 (3, '1145018000002', 3, '700000.00', 3),
 (4, '1816002000001', 8, '90000.00', 3),
 (5, '1093016000002', 1, '5000.00', 4),
-(6, '1740002000002', 1, '90000.00', 5);
+(6, '1740002000002', 1, '90000.00', 5),
+(7, 'PGDC00016', 5, '50000.00', 6);
 
 -- --------------------------------------------------------
 
@@ -332,7 +334,8 @@ INSERT INTO `orders` (`order_id`, `emp_id`, `sup_id`, `amount`, `order_date`, `o
 (2, '124', 1, '90000.00', '2020-04-02', '18:29:29', 'ອະນຸມັດ', NULL, 'SEEN', 'SEEN', NULL),
 (3, '124', 2, '2880000.00', '2020-04-08', '18:30:45', 'ອະນຸມັດ', NULL, 'SEEN', 'SEEN', NULL),
 (4, '124', 1, '5000.00', '2020-05-13', '12:50:44', 'ອະນຸມັດ', NULL, 'SEEN', 'NOTSEEN', NULL),
-(5, '124', 1, '90000.00', '2020-05-14', '20:08:13', 'ຍັງບໍ່ອະນຸມັດ', NULL, 'SEEN', 'NOTSEEN', NULL);
+(5, '124', 1, '90000.00', '2020-05-14', '20:08:13', 'ຍັງບໍ່ອະນຸມັດ', NULL, 'SEEN', 'NOTSEEN', NULL),
+(6, '124', 2, '250000.00', '2020-05-24', '11:24:01', 'ອະນຸມັດ', NULL, 'SEEN', 'SEEN', NULL);
 
 -- --------------------------------------------------------
 
@@ -358,16 +361,17 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`pro_id`, `pro_name`, `qty`, `price`, `cated_id`, `unit_id`, `brand_id`, `promotion`, `qtyalert`, `img_path`) VALUES
-('1093016000002', 'Kilburn II Portable', 3, '3000000.00', 10, 1, 15, '200000.00', 10, 'img_5e6e300ed7b5d.jpg'),
+('1093016000002', 'Kilburn II Portable', 8, '3000000.00', 10, 1, 15, '200000.00', 10, 'img_5e6e300ed7b5d.jpg'),
 ('1093025000002', 'Stockwell II', 0, '2400000.00', 10, 1, 15, '150000.00', 10, 'img_5e6e4e5177042.jpg'),
-('1095126000011', 'Flip 5 Portable', 10, '1200000.00', 10, 1, 8, '100000.00', 10, 'img_5e6e4ec2dd941.jpg'),
+('1095126000011', 'Flip 5 Portable', 11, '1200000.00', 10, 1, 8, '100000.00', 10, 'img_5e6e4ec2dd941.jpg'),
 ('1145018000002', 'B&W PX7 Noise', 5, '5100000.00', 3, 13, 30, '30000.00', 0, 'img_5e6e51db3f72a.jpg'),
 ('1298052000002', 'Plantronics BackBeat Fit 3200 ', 9, '1500000.00', 2, 13, 8, '0.00', 10, 'img_5e6e52b26db6d.jpg'),
 ('1679005000003', '7', 12, '5100000.00', 17, 1, 19, '0.00', 10, 'img_5e6f567a67869.jpg'),
-('1740002000002', 'SoundPeats TrueCapsule', 9, '300000.00', 2, 13, 28, '0.00', 10, 'img_5e6e4f8227fdd.jpg'),
+('1740002000002', 'SoundPeats TrueCapsule', 8, '300000.00', 2, 13, 28, '0.00', 10, 'img_5e6e4f8227fdd.jpg'),
 ('1740005000002', 'SoundPeats TrueAir', 19, '420000.00', 2, 10, 28, '0.00', 10, 'img_5e6e52598fd7d.jpg'),
 ('1816002000001', 'GTO', 9, '420000.00', 17, 1, 29, '0.00', 10, 'img_5e6e508657c29.jpg'),
-('1889002000005', 'Watch GT2', 10, '1900000.00', 17, 1, 14, '0.00', 10, 'img_5e6e50ce2bf37.jpg');
+('1889002000005', 'Watch GT2', 10, '1900000.00', 17, 1, 14, '0.00', 10, 'img_5e6e50ce2bf37.jpg'),
+('PGDC00016', 'ແບັດເຕີໄອໂຟນ 6 Plus', 1, '150000.00', 19, 8, 14, '10000.00', 10, 'img_5ec9f611d4c38.png');
 
 -- --------------------------------------------------------
 
@@ -387,7 +391,7 @@ CREATE TABLE `rate` (
 
 INSERT INTO `rate` (`rate_id`, `rate_buy`, `rate_sell`) VALUES
 ('LAK', '1.00', '1.00'),
-('USD', '9000.00', '9000.00'),
+('USD', '9570.00', '9800.00'),
 ('THB', '300.00', '300.00');
 
 -- --------------------------------------------------------
@@ -408,6 +412,7 @@ CREATE TABLE `sell` (
   `sell_type` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cupon_key` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cupon_price` decimal(11,2) DEFAULT NULL,
+  `discount` decimal(11,2) NOT NULL,
   `note` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -415,15 +420,22 @@ CREATE TABLE `sell` (
 -- Dumping data for table `sell`
 --
 
-INSERT INTO `sell` (`sell_id`, `emp_id`, `cus_id`, `sell_date`, `sell_time`, `amount`, `status_cash`, `img_path`, `sell_type`, `cupon_key`, `cupon_price`, `note`) VALUES
-(1, '124', 14, '2020-05-14', '20:42:59', '2800000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '-'),
-(2, '124', 14, '2020-06-14', '20:50:57', '2800000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '-'),
-(3, '124', 14, '2020-04-14', '21:00:44', '2800000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '-'),
-(4, '124', 14, '2020-05-14', '21:04:18', '2800000.00', 'ເງິນໂອນ', 'img_5ebd4fe20593c.jpg', 'ໜ້າຮ້ານ', '0', '0.00', '-'),
-(5, '124', 14, '2020-02-14', '21:08:47', '2250000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '-'),
-(6, '124', 14, '2020-05-14', '21:09:52', '2250000.00', 'ເງິນໂອນ', 'img_5ebd5130619d0.jpg', 'ໜ້າຮ້ານ', '0', '0.00', '-'),
-(7, '124', 14, '2020-05-14', '23:21:30', '5070000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '-'),
-(8, '124', 14, '2020-05-18', '20:23:15', '2800000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '-');
+INSERT INTO `sell` (`sell_id`, `emp_id`, `cus_id`, `sell_date`, `sell_time`, `amount`, `status_cash`, `img_path`, `sell_type`, `cupon_key`, `cupon_price`, `discount`, `note`) VALUES
+(1, '124', 14, '2020-05-14', '20:42:59', '2800000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '0.00', '-'),
+(2, '124', 14, '2020-06-14', '20:50:57', '2800000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '0.00', '-'),
+(3, '124', 14, '2020-04-14', '21:00:44', '2800000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '0.00', '-'),
+(4, '124', 14, '2020-05-14', '21:04:18', '2800000.00', 'ເງິນໂອນ', 'img_5ebd4fe20593c.jpg', 'ໜ້າຮ້ານ', '0', '0.00', '0.00', '-'),
+(5, '124', 14, '2020-02-14', '21:08:47', '2250000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '0.00', '-'),
+(6, '124', 14, '2020-05-14', '21:09:52', '2250000.00', 'ເງິນໂອນ', 'img_5ebd5130619d0.jpg', 'ໜ້າຮ້ານ', '0', '0.00', '0.00', '-'),
+(7, '124', 14, '2020-05-14', '23:21:30', '5070000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '0.00', '-'),
+(8, '124', 14, '2020-05-18', '20:23:15', '2800000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '0.00', '-'),
+(9, '124', 14, '2020-05-24', '11:43:51', '407000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', 'sdfsdfsdf', '13000.00', '0.00', '-'),
+(10, '124', 14, '2020-05-24', '12:34:07', '140000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '0.00', '-'),
+(11, '124', 14, '2020-05-24', '15:25:08', '2800000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '0.00', '-'),
+(12, '124', 14, '2020-05-24', '15:43:33', '2500000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '0.00', '-'),
+(13, '124', 14, '2020-05-24', '15:52:23', '250000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', '0', '0.00', '50000.00', '-'),
+(14, '124', 14, '2020-05-24', '16:05:54', '2487000.00', 'ເງິນສົດ', '0', 'ໜ້າຮ້ານ', 'sdfsdfsdf', '13000.00', '300000.00', '-'),
+(15, '124', 14, '2020-05-24', '16:07:08', '2700000.00', 'ເງິນໂອນ', 'img_5eca393c298c1.png', 'ໜ້າຮ້ານ', '1', '50000.00', '50000.00', '-');
 
 -- --------------------------------------------------------
 
@@ -450,7 +462,14 @@ INSERT INTO `selldetail` (`detail_id`, `pro_id`, `qty`, `price`, `promotion`, `s
 (3, '1093025000002', 1, '2250000.00', '150000.00', 5),
 (4, '1093025000002', 1, '2250000.00', '150000.00', 6),
 (5, '1145018000002', 1, '5070000.00', '30000.00', 7),
-(6, '1093016000002', 1, '2800000.00', '200000.00', 8);
+(6, '1093016000002', 1, '2800000.00', '200000.00', 8),
+(7, 'PGDC00016', 3, '140000.00', '10000.00', 9),
+(8, 'PGDC00016', 1, '140000.00', '10000.00', 10),
+(9, '1093016000002', 1, '2800000.00', '200000.00', 11),
+(10, '1093016000002', 1, '2800000.00', '200000.00', 12),
+(11, '1740002000002', 1, '300000.00', '0.00', 13),
+(12, '1093016000002', 1, '2800000.00', '200000.00', 14),
+(13, '1093016000002', 1, '2800000.00', '200000.00', 15);
 
 -- --------------------------------------------------------
 
@@ -462,7 +481,7 @@ CREATE TABLE `shop` (
   `id` int(11) NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `address` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `tel` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tel` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `img_path` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
   `img_title` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -516,7 +535,7 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`sup_id`, `company`, `tel`, `fax`, `address`, `email`) VALUES
-(1, 'ສັນຕິພາບ ຄອມພິວເຕີ2', '2020-5555-6633', '2+856 20 5464 9656', '2Lao Airlines Building 7th Floor, Manthatourath Road, Xiengyeun Village, Chantabouly District, Vientiane Capital, Lao P.D.R (Headquarter)', '2bie_domonclup@hotmail.com'),
+(1, 'ສັນຕິພາບ ຄອມພິວເຕີ2', '20-5555-6633', '+856 20 5464 9656', '2Lao Airlines Building 7th Floor, Manthatourath Road, Xiengyeun Village, Chantabouly District, Vientiane Capital, Lao P.D.R (Headquarter)', '2bie_domonclup@hotmail.com'),
 (2, 'Jiro Computer', '+856 20 5232 9555', '+856 20 5464 9656', 'Lao Airlines Building 7th Floor, Manthatourath Road, Xiengyeun Village, Chantabouly District, Vientiane Capital, Lao P.D.R (Headquarter)', 'Robert@gmail.com');
 
 -- --------------------------------------------------------
@@ -711,37 +730,37 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `imports`
 --
 ALTER TABLE `imports`
-  MODIFY `imp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `imp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `listimports`
 --
 ALTER TABLE `listimports`
-  MODIFY `imp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `imp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `listorderdetail`
 --
 ALTER TABLE `listorderdetail`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `listselldetail2`
 --
 ALTER TABLE `listselldetail2`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `selldetail`
 --
 ALTER TABLE `selldetail`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `shop`
