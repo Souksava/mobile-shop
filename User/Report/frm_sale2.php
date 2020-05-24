@@ -18,7 +18,7 @@
     if(isset($_GET['id'])){
         $sell_id = $_GET['id'];
     }
-    $sqlsell = "select sell_id,cus_name,sell_date,sell_time,amount,status_cash,s.img_path,sell_type,cupon_price,cupon_key,emp_name from sell s left join customers c on s.cus_id=c.cus_id left join employees e on s.emp_id=e.emp_id where s.sell_id='$sell_id';";
+    $sqlsell = "select sell_id,cus_name,sell_date,sell_time,amount,status_cash,s.img_path,sell_type,cupon_price,cupon_key,emp_name,discount from sell s left join customers c on s.cus_id=c.cus_id left join employees e on s.emp_id=e.emp_id where s.sell_id='$sell_id';";
     $resultsell = mysqli_query($link,$sqlsell);
     $rowsell = mysqli_fetch_array($resultsell,MYSQLI_ASSOC);
     $sqlseen = "update sell set seen1='SEEN' where sell_id='$sell_id';";
@@ -114,7 +114,8 @@
                     </div>
                     <div class="col-md-12">
                         <br><h4 style="color: #CE3131;"><?php echo number_format($rowsell['amount'],2) ?> ກີບ</h4> 
-                        <label style="color: #7E7C7C;font-size: 12px;">ຄູປ໋ອງສ່ວນລົດ: <?php echo number_format($rowsell['cupon_price'],2); ?> ກີບ</label>                   
+                        <label style="color: #7E7C7C;font-size: 12px;">ຄູປ໋ອງສ່ວນລົດ: <?php echo number_format($rowsell['cupon_price'],2); ?> ກີບ</label><br>              
+                        <label style="color: #7E7C7C;font-size: 12px;">ສ່ວນຫຼຸດພິເສດ: <?php echo number_format($rowsell['discount'],2); ?> ກີບ</label>                   
                     </div>
                 </div>
             </div>

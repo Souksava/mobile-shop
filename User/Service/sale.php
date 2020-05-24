@@ -224,9 +224,13 @@
                                             </div>
                                             <hr size="3" align="center" width="100%">
                                             <div class="col-md-12 form-group">
-                                            <label>ບັດຄູປ໋ອງສ່ວນລົດ</label>
+                                                <label>ບັດຄູປ໋ອງສ່ວນລົດ</label>
                                                 <input type="text" name="cupon" class="form-control" placeholder="ບັດຄູປ໋ອງສ່ວນລົດ">
                                                 <input type="hidden" name="amount" value="<?php echo $rowsell['amount']; ?>">
+                                            </div>
+                                            <div class="col-md-12 form-group">
+                                                <label>ຈຳນວນຫຼຸດລາຄາພິເສດ</label>
+                                                <input type="number" name="discount" class="form-control" placeholder="ຈຳນວນຫຼຸດລາຄາພິເສດ">
                                             </div>
                                             <div class="col-md-12" align="center">
                                                 <button type="submit" name="btnSale" name="btncontinue" class="btn btn-outline-success">

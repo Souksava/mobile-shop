@@ -53,6 +53,10 @@
     <?php 
         if(isset($_POST['btnSave'])){
             $cupon_key = $_POST['cupon_key'];
+            $discount2 = $_POST['discount2'];
+            if(trim($discount2) == ""){
+                $discount2 = 0;
+            }
             if(trim($cupon_key) === ""){
                 $cupon_key = "0";
             }
@@ -70,7 +74,7 @@
             $rowbillno = mysqli_fetch_array($resultbillno,MYSQLI_ASSOC);
             $billno = $rowbillno['bill'] + 1;echo"<br>";
             if($_FILES['img_path']['name'] == ''){
-                $sqlsave = "insert into sell(sell_id,emp_id,cus_id,sell_date,sell_time,amount,status_cash,img_path,sell_type,cupon_key,cupon_price,note) values('$billno','$emp_id','$cus_id','$Date','$Time','$newamount2','ເງິນສົດ','0','ໜ້າຮ້ານ','$cupon_key','$cupon_price2','-');";
+                $sqlsave = "insert into sell(sell_id,emp_id,cus_id,sell_date,sell_time,amount,status_cash,img_path,sell_type,cupon_key,cupon_price,note,discount) values('$billno','$emp_id','$cus_id','$Date','$Time','$newamount2','ເງິນສົດ','0','ໜ້າຮ້ານ','$cupon_key','$cupon_price2','-','$discount2');";
                 $resultsave = mysqli_query($link,$sqlsave);
                 if(!$resultsave){
                     echo"<script>";
@@ -103,7 +107,7 @@
                 $upload_path = $image_path.$new_image_name;
                 move_uploaded_file($_FILES["img_path"]["tmp_name"], $upload_path);
                 $pro_img = $new_image_name;
-                $sqlsave = "insert into sell(sell_id,emp_id,cus_id,sell_date,sell_time,amount,status_cash,img_path,sell_type,cupon_key,cupon_price,note) values('$billno','$emp_id','$cus_id','$Date','$Time','$newamount2','ເງິນໂອນ','$pro_img','ໜ້າຮ້ານ','$cupon_key','$cupon_price2','-');";
+                $sqlsave = "insert into sell(sell_id,emp_id,cus_id,sell_date,sell_time,amount,status_cash,img_path,sell_type,cupon_key,cupon_price,note,discount) values('$billno','$emp_id','$cus_id','$Date','$Time','$newamount2','ເງິນໂອນ','$pro_img','ໜ້າຮ້ານ','$cupon_key','$cupon_price2','-','$discount2');";
                 $resultsave = mysqli_query($link,$sqlsave);
                 if(!$resultsave){
                     echo"<script>";
@@ -134,6 +138,7 @@
         if(isset($_POST['btnSale'])){
         $amount = $_POST['amount'];
         $cupon = $_POST['cupon'];
+        $discount = $_POST['discount'];
         if(trim($cupon) == ""){
             $cupon = "0";
         }
@@ -149,7 +154,7 @@
         $resultcupon = mysqli_query($link,$sqlcupon);
         $rowcupon = mysqli_fetch_array($resultcupon,MYSQLI_ASSOC);
         $cupon_price = $rowcupon['price'];
-        $newamount = $rowsell['amount'] - $cupon_price;
+        $newamount = $rowsell['amount'] - ($cupon_price + $discount);
     ?>   
     <div class="container font14">
 		<div class="row">
@@ -221,7 +226,8 @@
                                                 else{
                                                     echo"<label style='color: #7E7C7C;font-size: 12px;'>ຄູປ໋ອງສ່ວນລົດ:".number_format($cupon_price,2)." ກີບ</label>";
                                                 }
-                                            ?>         
+                                            ?>   
+                                            <br><label style="color: #7E7C7C;font-size: 12px;">ຫຼຸດລາຄາພິເສດ <?php echo number_format($discount,2); ?> ກີບ</label>      
                                         </div>
                                     </div>
                                 </p>
@@ -246,6 +252,7 @@
                                             <div class="col-md-12 form-group">
                                                 <input type="hidden" name="cupon_key" value="<?php echo $rowcupon['cupon_key']; ?>">
                                                 <input type="hidden" name="cupon_price" value="<?php echo $cupon_price ?>">
+                                                <input type="hidden" name="discount2" value="<?php echo $discount ?>">
                                                 <input type="hidden" name="newamount2" value="<?php echo $newamount; ?>">
                                                <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#staticBackdrop" style="width: 100%;">

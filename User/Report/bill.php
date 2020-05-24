@@ -41,12 +41,17 @@ function ShowData2(){
         $resultsum2 = mysqli_query($link,$sqlsum2);
         $rowsum2 = mysqli_fetch_array($resultsum2, MYSQLI_ASSOC);
         $cupon_price = $rowsum2['cupon_price'];
-        $amount = $rowsum['amount'] - $cupon_price;
+        $sqldis = "select discount from sell where emp_id='124' and sell_id='$sell_id';";
+        $resultdis = mysqli_query($link,$sqldis);
+        $rowdis = mysqli_fetch_array($resultdis,MYSQLI_ASSOC);
+        $discount = $rowdis['discount'];
+        $amount = $rowsum['amount'] - ($cupon_price + $discount);
             $output .='
                 <div align="right" style="font-size: 10px;">
                     <b style="font-size: 10px;">ຍອມລວມ (ລວມພາສີມູນຄ່າເພີ່ມ) </b><br>
                     <b align="right" style="font-size: 16px;">'.number_format($amount,2).' ກີບ</b><br>
-                    <label style="font-size: 6px;">ຄູປ໋ອງສ່ວນລົດ: '.number_format($cupon_price,2).' ກີບ</label>                   
+                    <label style="font-size: 6px;">ຄູປ໋ອງສ່ວນລົດ: '.number_format($cupon_price,2).' ກີບ</label> <br>
+                    <label style="font-size: 6px;">ສ່ວນຫຼຸດພິເສດ: '.number_format($discount,2).' ກີບ</label>                   
                 </div>
                 
             ';
@@ -64,7 +69,7 @@ $sell_date = $_POST['sell_date'];
 $sell_time = $_POST['sell_time'];
 $content = '
             <div align="center" >
-                <a href="sale.php"><img src="../../image/'.$img_path.'" width="60px"></a>
+                <a href="frmsale.php"><img src="../../image/'.$img_path.'" width="60px"></a>
             </div>
             <div align="center" style="font-size: 8px;text-align: center;">
                 <p>
