@@ -28,14 +28,22 @@ function ShowData(){
         $sql2 = "select sum(d.qty*d.price) as amount from selldetail d left join sell s on d.sell_id=s.sell_id left join product p on d.pro_id=p.pro_id left join categorydetail i on p.cated_id=i.cated_id left join brand b on p.brand_id=b.brand_id left join unit u on p.unit_id=u.unit_id;";
         $result2 = mysqli_query($link,$sql2);
         $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
-        $sql3 = "select sum(cupon_price) as cupon_price from sell";
+        $sql3 = "select sum(cupon_price) as cupon_price,sum(cus_discount) as cus_discount,sum(discount) as discount from sell";
         $result3 = mysqli_query($link,$sql3);
         $row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC);
-        $amount = $row2['amount'] - $row3['cupon_price'];
+        $amount = $row2['amount'] - ($row3['cupon_price'] + $row3['cus_discount'] + $row3['discount']);
         $output .='
         <tr class="fontblack18">
             <td colspan="3" align="right"><h3><b>ມູນຄ່າຄູປ໋ອງສ່ວນລົດ : </b></h3></td>
             <td colspan="2" align="right"><h3><b>'.number_format($row3["cupon_price"],2).' ກີບ</h3> </b></td>
+        </tr>    
+        <tr class="fontblack18">
+            <td colspan="3" align="right"><h3><b>ສ່ວນລົດລູກຄ້າສະມາຊິກ : </b></h3></td>
+            <td colspan="2" align="right"><h3><b>'.number_format($row3["cus_discount"],2).' ກີບ</h3> </b></td>
+        </tr>    
+        <tr class="fontblack18">
+            <td colspan="3" align="right"><h3><b>ສ່ວນລົດພິເສດ : </b></h3></td>
+            <td colspan="2" align="right"><h3><b>'.number_format($row3["discount"],2).' ກີບ</h3> </b></td>
         </tr>    
         <tr class="fontblack18">
             <td colspan="3" align="right"><h3><b>ມູນຄ່າທັງໝົດ : </b></h3></td>
@@ -66,14 +74,22 @@ function ShowData(){
         $sql2 = "select sum(d.qty*d.price) as amount from selldetail d left join sell s on d.sell_id=s.sell_id left join product p on d.pro_id=p.pro_id left join categorydetail i on p.cated_id=i.cated_id left join brand b on p.brand_id=b.brand_id left join unit u on p.unit_id=u.unit_id where sell_date between '$date1' and '$date2';";
         $result2 = mysqli_query($link,$sql2);
         $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
-        $sql3 = "select sum(cupon_price) as cupon_price from sell where sell_date between '$date1' and '$date2'";
+        $sql3 = "select sum(cupon_price) as cupon_price,sum(cus_discount) as cus_discount,sum(discount) as discount from sell where sell_date between '$date1' and '$date2'";
         $result3 = mysqli_query($link,$sql3);
         $row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC);
-        $amount = $row2['amount'] - $row3['cupon_price'];
+        $amount = $row2['amount'] - ($row3['cupon_price'] + $row3['cus_discount'] + $row3['discount']);
         $output .='
         <tr class="fontblack18">
             <td colspan="3" align="right"><h3><b>ມູນຄ່າຄູປ໋ອງສ່ວນລົດ : </b></h3></td>
             <td colspan="2" align="right"><h3><b>'.number_format($row3["cupon_price"],2).' ກີບ</h3> </b></td>
+        </tr>    
+        <tr class="fontblack18">
+            <td colspan="3" align="right"><h3><b>ສ່ວນລົດລູກຄ້າສະມາຊິກ : </b></h3></td>
+            <td colspan="2" align="right"><h3><b>'.number_format($row3["cus_discount"],2).' ກີບ</h3> </b></td>
+        </tr>    
+        <tr class="fontblack18">
+            <td colspan="3" align="right"><h3><b>ສ່ວນລົດພິເສດ : </b></h3></td>
+            <td colspan="2" align="right"><h3><b>'.number_format($row3["discount"],2).' ກີບ</h3> </b></td>
         </tr>    
         <tr class="fontblack18">
             <td colspan="3" align="right"><h3><b>ມູນຄ່າທັງໝົດ : </b></h3></td>

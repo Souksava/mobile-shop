@@ -41,17 +41,19 @@ function ShowData2(){
         $resultsum2 = mysqli_query($link,$sqlsum2);
         $rowsum2 = mysqli_fetch_array($resultsum2, MYSQLI_ASSOC);
         $cupon_price = $rowsum2['cupon_price'];
-        $sqldis = "select discount from sell where emp_id='124' and sell_id='$sell_id';";
+        $sqldis = "select discount,cus_discount from sell where emp_id='124' and sell_id='$sell_id';";
         $resultdis = mysqli_query($link,$sqldis);
         $rowdis = mysqli_fetch_array($resultdis,MYSQLI_ASSOC);
         $discount = $rowdis['discount'];
-        $amount = $rowsum['amount'] - ($cupon_price + $discount);
+        $cus_discount = $rowdis['cus_discount'];
+        $amount = $rowsum['amount'] - ($cupon_price + $discount + $cus_discount);
             $output .='
                 <div align="right" style="font-size: 10px;">
                     <b style="font-size: 10px;">ຍອມລວມ (ລວມພາສີມູນຄ່າເພີ່ມ) </b><br>
                     <b align="right" style="font-size: 16px;">'.number_format($amount,2).' ກີບ</b><br>
                     <label style="font-size: 6px;">ຄູປ໋ອງສ່ວນລົດ: '.number_format($cupon_price,2).' ກີບ</label> <br>
-                    <label style="font-size: 6px;">ສ່ວນຫຼຸດພິເສດ: '.number_format($discount,2).' ກີບ</label>                   
+                    <label style="font-size: 6px;">ສ່ວນຫຼຸດພິເສດ: '.number_format($discount,2).' ກີບ</label><br>
+                    <label style="font-size: 6px;">ສ່ວນລົດລູກຄ້າສະມາຊິກ: '.number_format($cus_discount,2).' ກີບ</label>                   
                 </div>
                 
             ';
@@ -86,7 +88,7 @@ $content = '
                 </div>
                 <div align="right" style="float: right;width: 45%;">
                     ເລກທີບິນ: '.$sell_id2.'<br>
-                    ລູກຄ້າທົ່ວໄປ
+                    ຊື່ລູກຄ້າສະມາຊິກ: '.$cus_name.'
                 </div>
             </div>
             <div style="text-align: center;font-size: 16px;">

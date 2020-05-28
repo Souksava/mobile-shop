@@ -135,10 +135,10 @@
                         $sql2 = "select sum(d.qty*d.price) as amount from selldetail d left join sell s on d.sell_id=s.sell_id left join product p on d.pro_id=p.pro_id left join categorydetail i on p.cated_id=i.cated_id left join brand b on p.brand_id=b.brand_id left join unit u on p.unit_id=u.unit_id left join employees y on s.emp_id=y.emp_id left join customers t on s.cus_id=t.cus_id;";
                         $result2 = mysqli_query($link,$sql2);
                         $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
-                        $sql3 = "select sum(cupon_price) as cupon_price from sell;";
+                        $sql3 = "select sum(cupon_price) as cupon_price,sum(cus_discount) as cus_discount,sum(discount) as discount from sell;";
                         $result3 = mysqli_query($link,$sql3);
                         $row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC);
-                        $amount = $row2['amount'] - $row3['cupon_price'];
+                        $amount = $row2['amount'] - ($row3['cupon_price'] + $row3['cus_discount'] + $row3['discount']);
                         $newamount = $amount;
                     ?>
                      <tr align="right" style="font-size: 26px;">
@@ -148,6 +148,14 @@
                     <tr align="right" style="font-size: 26px;">
                         <td colspan="9">ຄູປ໋ອງສ່ວນລົດ: </td>
                         <td colspan="4"><?php echo number_format($row3['cupon_price'],2); ?> ກີບ</td>
+                    </tr>
+                    <tr align="right" style="font-size: 26px;">
+                        <td colspan="9">ສ່ວນລົດລູກຄ້າສະມາຊິກ: </td>
+                        <td colspan="4"><?php echo number_format($row3['cus_discount'],2); ?> ກີບ</td>
+                    </tr>
+                    <tr align="right" style="font-size: 26px;">
+                        <td colspan="9">ສ່ວນລົດພິເສດ: </td>
+                        <td colspan="4"><?php echo number_format($row3['discount'],2); ?> ກີບ</td>
                     </tr>
                     <tr align="right" style="font-size: 26px;">
                         <td colspan="9">ລາຍຮັບຕົວຈິງ: </td>
@@ -228,10 +236,10 @@
                         $sql2 = "select sum(d.qty*d.price) as amount from selldetail d left join sell s on d.sell_id=s.sell_id left join product p on d.pro_id=p.pro_id left join categorydetail i on p.cated_id=i.cated_id left join brand b on p.brand_id=b.brand_id left join unit u on p.unit_id=u.unit_id left join employees y on s.emp_id=y.emp_id left join customers t on s.cus_id=t.cus_id where sell_date between '$date1' and '$date2';";
                         $result2 = mysqli_query($link,$sql2);
                         $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
-                        $sql3 = "select sum(cupon_price) as cupon_price from sell where sell_date between '$date1' and '$date2';";
+                        $sql3 = "select sum(cupon_price) as cupon_price,sum(cus_discount) as cus_discount,sum(discount) as discount from sell where sell_date between '$date1' and '$date2';";
                         $result3 = mysqli_query($link,$sql3);
                         $row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC);
-                        $amount = $row2['amount'] - $row3['cupon_price'];
+                        $amount = $row2['amount'] - ($row3['cupon_price'] + $row3['cus_discount'] + $row3['discount']);
                         $newamount = $amount;
                     ?>
                      <tr align="right" style="font-size: 26px;">
@@ -241,6 +249,14 @@
                     <tr align="right" style="font-size: 26px;">
                         <td colspan="9">ຄູປ໋ອງສ່ວນລົດ: </td>
                         <td colspan="4"><?php echo number_format($row3['cupon_price'],2); ?> ກີບ</td>
+                    </tr>
+                    <tr align="right" style="font-size: 26px;">
+                        <td colspan="9">ສ່ວນລົດລູກຄ້າສະມາຊິກ: </td>
+                        <td colspan="4"><?php echo number_format($row3['cus_discount'],2); ?> ກີບ</td>
+                    </tr>
+                    <tr align="right" style="font-size: 26px;">
+                        <td colspan="9">ສ່ວນລົດພິເສດ: </td>
+                        <td colspan="4"><?php echo number_format($row3['discount'],2); ?> ກີບ</td>
                     </tr>
                     <tr align="right" style="font-size: 26px;">
                         <td colspan="9">ລາຍຮັບຕົວຈິງ: </td>

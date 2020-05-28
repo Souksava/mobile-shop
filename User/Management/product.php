@@ -83,9 +83,9 @@
                                                 <input type="number" min="0" name="price" class="form-control" placeholder="ລາຄາ">
                                             </div>
                                             <div class="col-md-12 form-group">
-                                                <label>ປະເພດສິນຄ້າຍ່ອຍ</label>
+                                                <label>ປະເພດສິນຄ້າ</label>
                                                 <select name="cate_id" id="" class="form-control">
-                                                    <option value="">ເລືອກປະເພດສິນຄ້າຍ່ອຍ</option>
+                                                    <option value="">ເລືອກປະເພດສິນຄ້າ</option>
                                                     <?php
                                                         $sqlcate = "select * from categorydetail;";
                                                         $resultcate = mysqli_query($link, $sqlcate);

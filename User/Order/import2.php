@@ -112,24 +112,31 @@
         <form action="import2.php" method="POST" id="form1">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 form-group"> 
+                    <label>ລະຫັດສິນຄ້າ ຫຼື ບາໂຄດ</label><br>
                     <input type="text" name="pro_id"  id="" class="form-control" placeholder="ລະຫັດສິນຄ້າ ຫຼື ບາໂຄດ">
                 </div>
                 <div class="col-xs-12 col-sm-6 form-group"> 
+                    <label>ຈຳນວນ</label><br>
                     <input type="number" name="qty"  min="1" id="" class="form-control" placeholder="ຈຳນວນ">
                 </div>
                 <div class="col-xs-12 col-sm-6 form-group"> 
+                    <label>ລາຄາ</label><br>
                     <input type="number" name="price"  min="0" id="" class="form-control" placeholder="ລາຄາ">
                 </div>
                 <div class="col-xs-12 col-sm-6 form-group"> 
+                    <label>ໝາຍເຫດ</label><br>
                     <input type="text" name="note" value="" min="0" id="" class="form-control" placeholder="ໝາຍເຫດ">
                 </div>
                 <div class="col-xs-12 col-sm-6 form-group"> 
+                    <label>ເລກທີບິນສັ່ງຊື້</label><br>
                     <input type="number" name="order_id"  min="0" id="" class="form-control" placeholder="ເລກທີບິນສັ່ງຊື້">
                 </div>
                 <div class="col-xs-12 col-sm-6 form-group"> 
+                    <label>ເລກທີບິນນຳເຂົ້າ</label><br>
                     <input type="text" name="imp_bill" value="" min="0" id="" class="form-control" placeholder="ເລກທີບິນນຳເຂົ້າ">
                 </div>
                 <div class="col-xs-12 col-sm-6 form-group">
+                    <label>ຜູ້ສະໜອງ</label><br>
                     <select name="sup_id" id="" class="form-control">
                         <option value="">ເລືອກຜູ້ສະໜອງ</option>
                         <?php
@@ -153,8 +160,6 @@
         }
     ?>
     <?php
-    
-      
         if(isset($_POST['btnAdd'])){
             $pro_id = $_POST['pro_id'];
             $qty = $_POST['qty'];

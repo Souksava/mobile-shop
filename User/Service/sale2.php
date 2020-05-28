@@ -54,6 +54,21 @@
         if(isset($_POST['btnSave'])){
             $cupon_key = $_POST['cupon_key'];
             $discount2 = $_POST['discount2'];
+            $cus_discount2 = $_POST['cus_discount2'];
+            if(trim($cus_discount2) == ""){
+                $cus_discount2 = 0;
+            }
+            $cus_id2 = $_POST['cus_id2'];
+            $sqlcus = "select * from customers where cus_id='$cus_id2';";
+            $resultcus = mysqli_query($link,$sqlcus);
+            $rowcus = mysqli_fetch_array($resultcus,MYSQLI_ASSOC);
+            $cus_id2 = $rowcus['cus_id'];echo"<br>";
+            if($cus_id2 == ""){
+                $sqlcus2 = "select * from customers where cus_name='ລູກຄ້າທົ່ວໄປ';";
+                $resultcus2 = mysqli_query($link,$sqlcus2);
+                $rowcus2 = mysqli_fetch_array($resultcus2,MYSQLI_ASSOC);
+                $cus_id2 = $rowcus2['cus_id'];
+            }
             if(trim($discount2) == ""){
                 $discount2 = 0;
             }
@@ -65,16 +80,12 @@
                 $cupon_price2 = "0";
             }
             $newamount2 = $_POST['newamount2'];
-            $sqlcus = "select * from customers where cus_name='ລູກຄ້າທົ່ວໄປ';";
-            $resultcus = mysqli_query($link,$sqlcus);
-            $rowcus = mysqli_fetch_array($resultcus,MYSQLI_ASSOC);
-            $cus_id = $rowcus['cus_id'];echo"<br>";
             $sqlbillno = "select max(sell_id) as bill from sell;";
             $resultbillno = mysqli_query($link,$sqlbillno);
             $rowbillno = mysqli_fetch_array($resultbillno,MYSQLI_ASSOC);
             $billno = $rowbillno['bill'] + 1;echo"<br>";
             if($_FILES['img_path']['name'] == ''){
-                $sqlsave = "insert into sell(sell_id,emp_id,cus_id,sell_date,sell_time,amount,status_cash,img_path,sell_type,cupon_key,cupon_price,note,discount) values('$billno','$emp_id','$cus_id','$Date','$Time','$newamount2','ເງິນສົດ','0','ໜ້າຮ້ານ','$cupon_key','$cupon_price2','-','$discount2');";
+                $sqlsave = "insert into sell(sell_id,emp_id,cus_id,sell_date,sell_time,amount,status_cash,img_path,sell_type,cupon_key,cupon_price,note,discount,cus_discount) values('$billno','$emp_id','$cus_id2','$Date','$Time','$newamount2','ເງິນສົດ','0','ໜ້າຮ້ານ','$cupon_key','$cupon_price2','-','$discount2','$cus_discount2');";
                 $resultsave = mysqli_query($link,$sqlsave);
                 if(!$resultsave){
                     echo"<script>";
@@ -139,6 +150,12 @@
         $amount = $_POST['amount'];
         $cupon = $_POST['cupon'];
         $discount = $_POST['discount'];
+        $cus_id = $_POST['cus_id'];
+        $sqlcus_dis = "select * from customers where cus_id='$cus_id'";
+        $resultcus_dis = mysqli_query($link,$sqlcus_dis);
+        $rowcus_dis = mysqli_fetch_array($resultcus_dis,MYSQLI_ASSOC);
+        $cus_discount = $rowcus_dis['cus_discount'];
+        $cus_discount = ($amount / 100) * $cus_discount;
         if(trim($discount) == ""){
             $discount = 0;
         }
@@ -157,7 +174,7 @@
         $resultcupon = mysqli_query($link,$sqlcupon);
         $rowcupon = mysqli_fetch_array($resultcupon,MYSQLI_ASSOC);
         $cupon_price = $rowcupon['price'];
-        $newamount = $rowsell['amount'] - ($cupon_price + $discount);
+        $newamount = $rowsell['amount'] - ($cupon_price + $discount + $cus_discount);
     ?>   
     <div class="container font14">
 		<div class="row">
@@ -231,6 +248,7 @@
                                                 }
                                             ?>   
                                             <br><label style="color: #7E7C7C;font-size: 12px;">ຫຼຸດລາຄາພິເສດ <?php echo number_format($discount,2); ?> ກີບ</label>      
+                                            <br><label style="color: #7E7C7C;font-size: 12px;">ສ່ວນລົດລູກຄ້າສະມາຊິກ <?php echo number_format($cus_discount,2); ?> ກີບ</label>      
                                         </div>
                                     </div>
                                 </p>
@@ -257,6 +275,8 @@
                                                 <input type="hidden" name="cupon_price" value="<?php echo $cupon_price ?>">
                                                 <input type="hidden" name="discount2" value="<?php echo $discount ?>">
                                                 <input type="hidden" name="newamount2" value="<?php echo $newamount; ?>">
+                                                <input type="hidden" name="cus_id2" value="<?php echo $cus_id; ?>">
+                                                <input type="hidden" name="cus_discount2" value="<?php echo $cus_discount; ?>">
                                                <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#staticBackdrop" style="width: 100%;">
                                                     ບັນທຶກການຂາຍ

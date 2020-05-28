@@ -15,11 +15,12 @@ $address = $rowshop['address'];
 $tel = $rowshop['tel'];
 $img_path = $rowshop['img_path'];
 $sell_id = $rowsell['sell_id'];
-$sqlsell2 = "select sell_date,sell_time  from sell where emp_id='$emp_id' and sell_id='$sell_id';";
+$sqlsell2 = "select sell_date,sell_time,cus_name from sell s left join customers c on s.cus_id=c.cus_id where emp_id='$emp_id' and sell_id='$sell_id';";
 $resultsell2 = mysqli_query($link,$sqlsell2);
 $rowsell2 = mysqli_fetch_array($resultsell2,MYSQLI_ASSOC);
 $sell_date = $rowsell2['sell_date'];
 $sell_time = $rowsell2['sell_time'];
+$cus_name = $rowsell2['cus_name'];
 function ShowData(){
         require '../../ConnectDB/connectDB.php';
         $emp_id = $_SESSION['emp_id'];
@@ -50,10 +51,11 @@ function ShowData2(){
         $resultsell = mysqli_query($link,$sqlsell);
         $rowsell = mysqli_fetch_array($resultsell,MYSQLI_ASSOC);
         $sell_id = $rowsell['sell_id'];
-        $sqldis = "select discount from sell where emp_id='124' and sell_id='$sell_id';";
+        $sqldis = "select discount,cus_discount from sell where emp_id='124' and sell_id='$sell_id';";
         $resultdis = mysqli_query($link,$sqldis);
         $rowdis = mysqli_fetch_array($resultdis,MYSQLI_ASSOC);
         $discount = $rowdis['discount'];
+        $cus_discount = $rowdis['cus_discount'];
         $sqlsum = "select sum(qty*price) as amount from selldetail where sell_id='$sell_id';";
         $resultsum = mysqli_query($link,$sqlsum);
         $rowsum = mysqli_fetch_array($resultsum, MYSQLI_ASSOC);
@@ -61,13 +63,14 @@ function ShowData2(){
         $resultsum2 = mysqli_query($link,$sqlsum2);
         $rowsum2 = mysqli_fetch_array($resultsum2, MYSQLI_ASSOC);
         $cupon_price = $rowsum2['cupon_price'];
-        $amount = $rowsum['amount'] - ($cupon_price + $discount);
+        $amount = $rowsum['amount'] - ($cupon_price + $discount + $cus_discount);
             $output .='
                 <div align="right" style="font-size: 10px;">
                     <b style="font-size: 10px;">ຍອມລວມ (ລວມພາສີມູນຄ່າເພີ່ມ) </b><br>
                     <b align="right" style="font-size: 16px;">'.number_format($amount,2).' ກີບ</b><br>
                     <label style="font-size: 6px;">ຄູປ໋ອງສ່ວນລົດ: '.number_format($cupon_price,2).' ກີບ</label> <br>  
-                    <label style="font-size: 6px;">ສ່ວນຫຼຸດພິເສດ: '.number_format($discount,2).' ກີບ</label>                   
+                    <label style="font-size: 6px;">ສ່ວນຫຼຸດພິເສດ: '.number_format($discount,2).' ກີບ</label>  <br>
+                    <label style="font-size: 6px;">ສ່ວນລົດລູກຄ້າສະມາຊິກ: '.number_format($cus_discount,2).' ກີບ</label>                   
                 </div>
                 
             ';
@@ -92,7 +95,7 @@ $content = '
                 </div>
                 <div align="right" style="float: right;width: 45%;">
                     ເລກທີບິນ: '.$sell_id.'<br>
-                    ລູກຄ້າທົ່ວໄປ
+                    ຊື່ສະມາຊິກ: '.$cus_name.'
                 </div>
             </div>
             <div style="text-align: center;font-size: 16px;">

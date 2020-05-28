@@ -224,6 +224,10 @@
                                             </div>
                                             <hr size="3" align="center" width="100%">
                                             <div class="col-md-12 form-group">
+                                                <label>ລະຫັດລູກຄ້າ ຫຼື ສະມາຊິກ</label>
+                                                <input type="text" name="cus_id" class="form-control" placeholder="ລະຫັດລູກຄ້າ ຫຼື ສະມາຊິກ">
+                                            </div>
+                                            <div class="col-md-12 form-group">
                                                 <label>ບັດຄູປ໋ອງສ່ວນລົດ</label>
                                                 <input type="text" name="cupon" class="form-control" placeholder="ບັດຄູປ໋ອງສ່ວນລົດ">
                                                 <input type="hidden" name="amount" value="<?php echo $rowsell['amount']; ?>">

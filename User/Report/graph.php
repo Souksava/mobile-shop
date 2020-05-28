@@ -110,46 +110,7 @@
               <a href="frmsale.php" class="small-box-footer">ຂໍ້ມູນເພີ່ມເຕີມ <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-secondary">
-              <div class="inner">
-                <?php 
-                  $sqlcus = "select count(cus_id) as count_cus from customers where pass != '';";
-                  $resultcus = mysqli_query($link,$sqlcus);
-                  $rowcus = mysqli_fetch_array($resultcus,MYSQLI_ASSOC);
-                ?>
-                <h4><?php echo $rowcus['count_cus']; ?> ຄົນ</h4>
 
-                <p>ຈຳນວນລູກຄ້າສະມາຊິກ</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="frm_customer.php" class="small-box-footer">ຂໍ້ມູນເພີ່ມເຕີມ <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-primary">
-              <div class="inner">
-                <?php 
-                  $sqlfb = "select count(cus_id) as count_cus from customers where fb_id != '';";
-                  $resultfb = mysqli_query($link,$sqlfb);
-                  $rowfb = mysqli_fetch_array($resultfb,MYSQLI_ASSOC);
-                ?>
-                <h4><?php echo $rowfb['count_cus']; ?> ຄົນ</h4>
-
-                <p>ຈຳນວນລູກຄ້າເຟສບຸ໊ກ</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="frm_customer.php" class="small-box-footer">ຂໍ້ມູນເພີ່ມເຕີມ <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
           <!-- ./col -->
         </div>
         <!-- /.row -->
