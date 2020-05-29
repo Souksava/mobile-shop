@@ -26,6 +26,7 @@
         <link rel="icon" href="../../image/<?php echo $rowshop['img_title']; ?>">
         <link rel="stylesheet" href="../../css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <body >
         <div class="header">
             <div class="container">
@@ -160,56 +161,47 @@
                 $img_path = $_POST['img_path'];
                 if(trim($pro_id) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ລະຫັດສິນຄ້າ');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?pro_id=null';";
                     echo"</script>";
                 }
                 elseif(trim($pro_name) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ຊື່ສິນຄ້າ');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?pro_name=null';";
                     echo"</script>";
                 }
                 elseif(trim($qty) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ຈຳນວນ');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?qty=null';";
                     echo"</script>";
                 }
                 elseif(trim($price) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ລາຄາ');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?price=null';";
                     echo"</script>";
                 }
                 elseif(trim($cate_id) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກປະເພດສິນຄ້າ');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?cate_id=null';";
                     echo"</script>";
                 }
                 elseif(trim($unit_id) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກຫົວໜ່ວຍສິນຄ້າ');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?unit_id=null';";
                     echo"</script>";
                 }
                 elseif(trim($brand_id) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກຍີ່ຫໍ້');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?brand_id=null';";
                     echo"</script>";
                 }
                 elseif(trim($promotion) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ໂປໂມຊັນສ່ວນຫຼຸດ');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?promotion=null';";
                     echo"</script>";
                 }
                 elseif(trim($qtyalert) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກເງືອນໄຂການສັ່ງຊື້');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?qtyalert=null';";
                     echo"</script>";
                 }
                 else {
@@ -217,8 +209,7 @@
                     $resultckid = mysqli_query($link,$sqlckid);
                     if(mysqli_num_rows($resultckid) > 0){
                         echo"<script>";
-                        echo"alert('ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້ ເນື່ອງຈາກລະຫັດສິນຄ້ານີ້ມີຢູ່ແລ້ວ');";
-                        echo"window.location.href='product.php';";
+                        echo"window.location.href='product.php?product=same';";
                         echo"</script>";
                     }
                     else {
@@ -232,18 +223,111 @@
                         $resultinsert = mysqli_query($link,$sqlinsert);
                         if(!$resultinsert){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='product.php';";
+                            echo"window.location.href='product.php?save=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ບັນທຶກຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='product.php';";
+                            echo"window.location.href='product.php?save=success';";
                             echo"</script>";
                         }
                     }
                 }
+            }
+            if(isset($_GET['pro_id'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນລະຫັດສິນຄ້າ !", "info");
+                </script>';
+            }
+            if(isset($_GET['pro_name'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນຊື່ສິນຄ້າ !", "info");
+                </script>';
+            }
+            if(isset($_GET['qty'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນຈຳນວນສິນຄ້າ !", "info");
+                </script>';
+            }
+            if(isset($_GET['price'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນລາຄາສິນຄ້າ !", "info");
+                </script>';
+            }
+            if(isset($_GET['unit_id'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາເລືອກຫົວໜ່ວຍສິນຄ້າ !", "info");
+                </script>';
+            }
+            if(isset($_GET['cate_id'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາເລືອກປະເພດສິນຄ້າ !", "info");
+                </script>';
+            }
+            if(isset($_GET['brand_id'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາເລືອກຍີ່ຫໍ້ສິນຄ້າ !", "info");
+                </script>';
+            }
+            if(isset($_GET['promotion'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນໂປຼໂມຊັນສ່ວນລົດ !", "info");
+                </script>';
+            }
+            if(isset($_GET['qtyalert'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນເງື່ອນໄຂການສັ່ງຊື້ສິນຄ້າ !", "info");
+                </script>';
+            }
+            if(isset($_GET['product'])=='same'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດເພີ່ມຂໍ້ມູນໄດ້ ເນື່ອງຈາກລະຫັດສິນຄ້ານີ້ມີຢູ່ແລ້ວ !", "error");
+                </script>';
+            }
+            if(isset($_GET['save'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['save'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ບັນທຶກຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+            if(isset($_GET['import'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ເນື່ອງຈາກສິນຄ້ານີ້ເຄີຍທຳການນຳເຂົ້າແລ້ວ !", "error");
+                </script>';
+            }
+            if(isset($_GET['order'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນສິນຄ້າໄດ້ ເນື່ອງຈາກສິນຄ້ານີ້ເຄີຍທຳການສັ່ງຊື້ແລ້ວ !", "error");
+                </script>';
+            }
+            if(isset($_GET['sell'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ເນື່ອງຈາກສິນຄ້ານີ້ເຄີຍທຳການຂາຍແລ້ວ !", "error");
+                </script>';
+            }
+            if(isset($_GET['del'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['del'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+            if(isset($_GET['update'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['update'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ແກ້ໄຂຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
             }
         ?>
         <div class="clearfix"></div>

@@ -26,6 +26,7 @@
     <link rel="icon" href="../../image/<?php echo $rowshop['img_title']; ?>">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body >
     <!-- head -->
@@ -104,7 +105,26 @@
             </tr>
             <?php
                 }
-            
+                if(isset($_GET['accept'])=='found'){
+                    echo'<script type="text/javascript">
+                    swal("", "ບໍ່ສາມາດອະນຸມັດການສັ່ງຊື້ໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                    </script>';
+                }
+                if(isset($_GET['accept'])=='success'){
+                    echo'<script type="text/javascript">
+                    swal("", "ອະນຸມັດການສັ່ງຊື້ສຳເລັດ !", "success");
+                    </script>';
+                }
+                if(isset($_GET['notaccept'])=='found'){
+                    echo'<script type="text/javascript">
+                    swal("", "ປະຕິເສດການສັ່ງຊື້ບໍ່ສຳເລັດ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                    </script>';
+                }
+                if(isset($_GET['notaccept'])=='success'){
+                    echo'<script type="text/javascript">
+                    swal("", "ປະຕິເສດການສັ່ງຊື້ສຳເລັດ !", "success");
+                    </script>';
+                }
             ?>
             </table>
         </div>

@@ -31,6 +31,7 @@
         <link rel="icon" href="../../image/<?php echo $rowshop['img_title']; ?>">
         <link rel="stylesheet" href="../../css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body >
     <!-- head -->
@@ -174,38 +175,37 @@
             $Time = date("H:i:s",$datenow);
             if(trim($pro_id) == ""){
                 echo"<script>";
-                echo"alert('ກະລຸນາປ້ອນລະຫັດສິນຄ້າ ຫຼື ບາໂຄດ');";
-                echo"window.location.href='import2.php';";
+                echo"window.location.href='import2.php?pro_id=null';";
                 echo"</script>";
             }
             elseif(trim($qty) == ""){
                 echo"<script>";
                 echo"alert('ກະລຸນາປ້ອນຈຳນວນນຳເຂົ້າສິນຄ້າ');";
-                echo"window.location.href='import2.php';";
+                echo"window.location.href='import2.php?qty=null';";
                 echo"</script>";
             }
             elseif(trim($price) == ""){
                 echo"<script>";
                 echo"alert('ກະລຸນາປ້ອນລາຄາ');";
-                echo"window.location.href='import2.php';";
+                echo"window.location.href='import2.php?price=null';";
                 echo"</script>";
             }
             elseif(trim($order_id) == ""){
                 echo"<script>";
                 echo"alert('ກະລຸນາປ້ອນເລກທີບິນສັ່ງຊື້');";
-                echo"window.location.href='import2.php';";
+                echo"window.location.href='import2.php?order_id=null';";
                 echo"</script>";
             }
             elseif(trim($imp_bill) == ""){
                 echo"<script>";
                 echo"alert('ກະລຸນາປ້ອນເລກທີບິນນຳເຂົ້າ');";
-                echo"window.location.href='import2.php';";
+                echo"window.location.href='import2.php?imp_id=null';";
                 echo"</script>";
             }
             elseif(trim($sup_id) == ""){
                 echo"<script>";
                 echo"alert('ກະລຸນາເລືອກຜູ້ສະໜອງ');";
-                echo"window.location.href='import2.php';";
+                echo"window.location.href='import2.php?sup_id=null';";
                 echo"</script>";
             }
             else{
@@ -217,13 +217,11 @@
                 $resultck = mysqli_query($link,$sqlck);
                 if(mysqli_num_rows($resultbill) == 0){
                     echo"<script>";
-                    echo"alert('ຂໍອະໄພບໍ່ສາມາດນຳເຂົ້າສິນຄ້າໄດ້ ເນື່ອງຈາກບິນສັ່ງຊື້ນີ້ຍັງບໍ່ທັນໄດ້ອະນຸມັດ, ກະລຸນາປ້ອນບິນສັ່ງຊື້ທີ່ອະນຸມັດແລ້ວ');";
-                    echo"window.location.href='import2.php';";
+                    echo"window.location.href='import2.php?import=found';";
                     echo"</script>";
                 }
                 else if(mysqli_num_rows($resultckpro) == 0){
                     echo"<script>";
-                    echo"alert('ສິນຄ້ານີ້ບໍ່ມີໃນລະບົບ ກະລຸນາເພີ່ມສິນຄ້າຢູ່ທີ່ຈັດການຂໍ້ມູນສິນຄ້າ');";
                     echo"window.location.href='import2.php';";
                     echo"</script>";
                 }
@@ -240,7 +238,7 @@
                         $sqlupdate = "update product set qty=qty+'$qty' where pro_id='$pro_id';";
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         echo"<script>";
-                        echo"window.location.href='import2.php';";
+                        echo"window.location.href='import2.php?product=no';";
                         echo"</script>";
                     }
                 }
@@ -249,8 +247,7 @@
                         $resultadd = mysqli_query($link,$sqladd);
                         if(!$resultadd){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດນຳເຂົ້າສິນຄ້າໄດ້');";
-                            echo"window.location.href='import2.php';";
+                            echo"window.location.href='import2.php?add=found';";
                             echo"</script>";
                         }
                         else {
@@ -358,8 +355,7 @@
             $Time = date("H:i:s",$datenow);
             if(trim($sumimp) == 0){
                 echo"<script>";
-                echo"alert('ກະລຸນາເພີ່ມລາຍການນຳເຂົ້າສິນຄ້າ');";
-                echo"window.location.href='import2.php';";
+                echo"window.location.href='import2.php?sum=null';";
                 echo"</script>";
             }
             else {
@@ -367,20 +363,89 @@
                 $resultsave = mysqli_query($link,$sqlsave);
                 if(!$resultsave){
                     echo"<script>";
-                    echo"alert('ບັນທຶກຂໍ້ມູນບໍ່ສຳເລັດ');";
-                    echo"window.location.href='import2.php';";
+                    echo"window.location.href='import2.php?save=found';";
                     echo"</script>";
                 }
                 else {
                     $sqlclear = "delete from listimports where emp_id='$emp_id';";
                     $resultclear = mysqli_query($link,$sqlclear);
                         echo"<script>";
-                        echo"alert('ບັນທຶກຂໍ້ມູນສຳເລັດ');";
-                        echo"window.location.href='import.php';";
+                        echo"window.location.href='import.php?save=success';";
                         echo"</script>";
                 }
             }
         }
+        if(isset($_GET['pro_id'])=='null'){
+            echo'<script type="text/javascript">
+            swal("", "ກະລຸນາປ້ອນລະຫັດສິນຄ້າ !", "info");
+            </script>';
+        }
+        if(isset($_GET['qty'])=='null'){
+            echo'<script type="text/javascript">
+            swal("", "ກະລຸນາປ້ອນຈຳນວນ !", "info");
+            </script>';
+        }
+        if(isset($_GET['price'])=='null'){
+            echo'<script type="text/javascript">
+            swal("", "ກະລຸນາປ້ອນລາຄາ !", "info");
+            </script>';
+        }
+        if(isset($_GET['order_id'])=='null'){
+            echo'<script type="text/javascript">
+            swal("", "ພະລຸນາປ້ອນເລກທີບິນສັ່ງຊື້ !", "info");
+            </script>';
+        }
+        if(isset($_GET['sup_id'])=='null'){
+            echo'<script type="text/javascript">
+            swal("", "ກະລຸນາເລືອກຜູ້ສະໜອງ !", "info");
+            </script>';
+        }
+        if(isset($_GET['imp_id'])=='null'){
+            echo'<script type="text/javascript">
+            swal("", "ກະລຸນາປ້ອນເລກທີບິນນຳເຂົ້າ !", "info");
+            </script>';
+        }
+        if(isset($_GET['import'])=='found'){
+            echo'<script type="text/javascript">
+            swal("", "ຂໍອະໄພບໍ່ສາມາດນຳເຂົ້າສິນຄ້າໄດ້ ເນື່ອງຈາກບິນສັ່ງຊື້ນີ້ຍັງບໍ່ທັນໄດ້ອະນຸມັດ, ກະລຸນາປ້ອນບິນສັ່ງຊື້ທີ່ອະນຸມັດແລ້ວ !", "error");
+            </script>';
+        }
+        if(isset($_GET['product'])=='no'){
+            echo'<script type="text/javascript">
+            swal("", "ສິນຄ້ານີ້ບໍ່ມີໃນລະບົບ ກະລຸນາເພີ່ມສິນຄ້າຢູ່ທີ່ຈັດການຂໍ້ມູນສິນຄ້າ !", "error");
+            </script>';
+        }
+        if(isset($_GET['add'])=='found'){
+            echo'<script type="text/javascript">
+            swal("", "ນຳເຂົ້າສິນຄ້າບໍ່ສຳເລັດ !", "error");
+            </script>';
+        }
+        if(isset($_GET['sum'])=='null'){
+            echo'<script type="text/javascript">
+            swal("", "ກະລຸນາເພີ່ມລາຍການນຳເຂົ້າສິນຄ້າ !", "info");
+            </script>';
+        }
+        if(isset($_GET['sum'])=='null'){
+            echo'<script type="text/javascript">
+            swal("", "ກະລຸນາເພີ່ມລາຍການນຳເຂົ້າ !", "info");
+            </script>';
+        }
+        if(isset($_GET['save'])=='found'){
+            echo'<script type="text/javascript">
+            swal("", "ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "info");
+            </script>';
+        }
+        if(isset($_GET['save'])=='success'){
+            echo'<script type="text/javascript">
+            swal("", "ບັນທຶກຂໍ້ມູນສຳເລັດ !", "info");
+            </script>';
+        }
+        if(isset($_GET['del'])=='found'){
+            echo'<script type="text/javascript">
+            swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+            </script>';
+        }
+        
     ?>
       <!-- body -->
   </body>

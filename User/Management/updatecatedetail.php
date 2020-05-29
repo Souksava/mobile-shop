@@ -75,8 +75,7 @@
                 $cate_name = $_POST['cate_name']; 
                 if(trim($cate_name) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ຊື່ປະເພດສິນຄ້າ');";
-                    echo"window.location.href='categorydetail.php';";
+                    echo"window.location.href='categorydetail.php?name=null';";
                     echo"</script>";
                 }
                 else {
@@ -85,14 +84,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='categorydetail.php';";
+                            echo"window.location.href='categorydetail.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='categorydetail.php';";
+                            echo"window.location.href='categorydetail.php?update=success';";
                             echo"</script>";
                         }
                     

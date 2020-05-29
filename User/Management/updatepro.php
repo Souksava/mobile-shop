@@ -145,50 +145,47 @@
                 $img_path = $_POST['img_path'];
                 if(trim($pro_id) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ລະຫັດສິນຄ້າ');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?pro_id=null';";
                     echo"</script>";
                 }
                 elseif(trim($pro_name) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ຊື່ສິນຄ້າ');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?pro_name=null';";
                     echo"</script>";
                 }
                 elseif(trim($qty) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ຈຳນວນ');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?qty=null';";
                     echo"</script>";
                 }
                 elseif(trim($price) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ລາຄາ');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?price=null';";
                     echo"</script>";
                 }
                 elseif(trim($cate_id) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກປະເພດສິນຄ້າ');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?cate_id=null';";
                     echo"</script>";
                 }
                 elseif(trim($unit_id) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກຫົວໜ່ວຍສິນຄ້າ');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?unit_id=null';";
                     echo"</script>";
                 }
                 elseif(trim($brand_id) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກຍີ່ຫໍ້');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?brand_id=null';";
                     echo"</script>";
                 }
                 elseif(trim($qtyalert) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກເງືອນໄຂການສັ່ງຊື້');";
-                    echo"window.location.href='product.php';";
+                    echo"window.location.href='product.php?qtyalert=null';";
+                    echo"</script>";
+                }
+                elseif(trim($promotion) == ""){
+                    echo"<script>";
+                    echo"window.location.href='product.php?promotion=null';";
                     echo"</script>";
                 }
                 else {
@@ -197,14 +194,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='product.php';";
+                            echo"window.location.href='product.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='product.php';";
+                            echo"window.location.href='product.php?update=success';";
                             echo"</script>";
                         }
                     }
@@ -230,14 +225,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='product.php';";
+                            echo"window.location.href='product.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='product.php';";
+                            echo"window.location.href='product.php?update=success';";
                             echo"</script>";
                         }
                     }

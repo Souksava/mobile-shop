@@ -26,6 +26,7 @@
         <link rel="icon" href="../../image/<?php echo $rowshop['img_title']; ?>">
         <link rel="stylesheet" href="../../css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <body >
         <div class="header">
             <div class="container">
@@ -84,6 +85,36 @@
                     </div>
                 </div>
                 <?php
+                    }
+                    if(isset($_GET['name'])=='null'){
+                        echo'<script type="text/javascript">
+                        swal("", "ກະລຸນາປ້ອນຊື່ຮ້ານ !", "info");
+                        </script>';
+                    }
+                    if(isset($_GET['address'])=='null'){
+                        echo'<script type="text/javascript">
+                        swal("", "ກະລຸນາປ້ອນທີ່ຕັ້ງຮ້ານ !", "info");
+                        </script>';
+                    }
+                    if(isset($_GET['tel'])=='null'){
+                        echo'<script type="text/javascript">
+                        swal("", "ກະລຸນາປ້ອນເບີໂທຮ້ານ !", "info");
+                        </script>';
+                    }
+                    if(isset($_GET['email'])=='null'){
+                        echo'<script type="text/javascript">
+                        swal("", "ກະລຸນາປ້ອນອີເມວ !", "info");
+                        </script>';
+                    }
+                    if(isset($_GET['update'])=='found'){
+                        echo'<script type="text/javascript">
+                        swal("", "ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                        </script>';
+                    }
+                    if(isset($_GET['update'])=='success'){
+                        echo'<script type="text/javascript">
+                        swal("", "ແກ້ໄຂຂໍ້ມູນສຳເລັດ !", "success");
+                        </script>';
                     }
                 ?>
             </div>

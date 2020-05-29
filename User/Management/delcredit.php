@@ -13,14 +13,12 @@
                     if(!$resultdel)
                     {
                         echo"<script>";
-                        echo"alert('ລົບຂໍ້ມູນບໍ່ສຳເລັດ');";
-                        echo"window.location.href='credit_card.php';";
+                        echo"window.location.href='credit_card.php?del=found';";
                         echo"</script>";
                     }
                     else{
                         echo"<script>";
-                        echo"alert('ລົບຂໍ້ມູນສຳເລັດ');";
-                        echo"window.location.href='credit_card.php';";
+                        echo"window.location.href='credit_card.php?del=success';";
                         echo"</script>";
                     } 
                

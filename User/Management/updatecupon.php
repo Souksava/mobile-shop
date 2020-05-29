@@ -81,14 +81,12 @@
                 $price = $_POST['price'];
                 if(trim($qty) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາປ້ອນຈຳນວນ');";
-                    echo"window.location.href='cupon.php';";
+                    echo"window.location.href='cupon.php?qty=null';";
                     echo"</script>";
                 }
                 else if(trim($price) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາປ້ອນລາຄາ');";
-                    echo"window.location.href='cupon.php';";
+                    echo"window.location.href='cupon.php?price=null';";
                     echo"</script>";
                 }
                 else {
@@ -96,14 +94,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='cupon.php';";
+                            echo"window.location.href='cupon.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='cupon.php';";
+                            echo"window.location.href='cupon.php?update=success';";
                             echo"</script>";
                         }
                     }

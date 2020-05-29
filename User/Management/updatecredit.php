@@ -84,20 +84,17 @@
                 $ac_name = $_POST['ac_name'];
                 if(trim($card_id) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາປ້ອນຊື່ບັດເຄດິດ');";
-                    echo"window.location.href='credit_card.php';";
+                    echo"window.location.href='credit_card.php?card_id=null';";
                     echo"</script>";
                 }
                 if(trim($ac_no) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາປ້ອນເລກທີບັນຊີ');";
-                    echo"window.location.href='credit_card.php';";
+                    echo"window.location.href='credit_card.php?ac_no=null';";
                     echo"</script>";
                 }
                 if(trim($ac_name) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາປ້ອນຊື່ບັນຊີ');";
-                    echo"window.location.href='credit_card.php';";
+                    echo"window.location.href='credit_card.php?ac_name=null';";
                     echo"</script>";
                 }
                 else {
@@ -106,14 +103,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='credit_card.php';";
+                            echo"window.location.href='credit_card.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='credit_card.php';";
+                            echo"window.location.href='credit_card.php?update=success';";
                             echo"</script>";
                         }
                     }
@@ -139,14 +134,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='credit_card.php';";
+                            echo"window.location.href='credit_card.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='credit_card.php';";
+                            echo"window.location.href='credit_card.php?update=success';";
                             echo"</script>";
                         }
                     }

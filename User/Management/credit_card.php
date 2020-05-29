@@ -26,6 +26,7 @@
         <link rel="icon" href="../../image/<?php echo $rowshop['img_title']; ?>">
         <link rel="stylesheet" href="../../css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <body >
         <div class="header">
             <div class="container">
@@ -150,6 +151,46 @@
                         }
                     }
                 }
+            }
+            if(isset($_GET['card_id'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນ !", "info");
+                </script>';
+            }
+            if(isset($_GET['ac_no'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນເລດຊື້ !", "info");
+                </script>';
+            }
+            if(isset($_GET['ac_name'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນເລດຊື້ !", "info");
+                </script>';
+            }
+            if(isset($_GET['credit'])=='same'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດເພີ່ມຂໍ້ມູນໄດ້ ເນື່ອງຈາກຂໍ້ມູນບັດນີ້ມີຢູ່ແລ້ວ !", "error");
+                </script>';
+            }
+            if(isset($_GET['save'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດເພີ່ມຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['save'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ບັນທຶກຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+            if(isset($_GET['update'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['update'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ແກ້ໄຂຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
             }
         ?>
         <div class="clearfix"></div>

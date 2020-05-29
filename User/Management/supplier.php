@@ -26,6 +26,7 @@
         <link rel="icon" href="../../image/<?php echo $rowshop['img_title']; ?>">
         <link rel="stylesheet" href="../../css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <body >
         <div class="header">
             <div class="container">
@@ -108,20 +109,17 @@
                 $email = $_POST['email'];
                 if(trim($company) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ຊື່ບໍລິສັດ');";
-                    echo"window.location.href='supplier.php';";
+                    echo"window.location.href='supplier.php?company=null';";
                     echo"</script>";
                 }
                 elseif(trim($address) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ທີ່ຕັ້ງບໍລິສັດ');";
-                    echo"window.location.href='supplier.php';";
+                    echo"window.location.href='supplier.php?address=null';";
                     echo"</script>";
                 }
                 elseif(trim($tel) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ເບີໂທຕິດຕໍ່ບໍລິສັດ');";
-                    echo"window.location.href='supplier.php';";
+                    echo"window.location.href='supplier.php?tel=null';";
                     echo"</script>";
                 }
                 else {
@@ -129,8 +127,7 @@
                     $resultckid = mysqli_query($link,$sqlckid);
                     if(mysqli_num_rows($resultckid) > 0){
                         echo"<script>";
-                        echo"alert('ບໍລິສັດນີ້ໄດ້ມີຢູ່ແລ້ວ ກະລຸນາໃສ່ຊື່ບໍລິສັດທີ່ແຕກຕ່າງ');";
-                        echo"window.location.href='supplier.php';";
+                        echo"window.location.href='supplier.php?supplier=same';";
                         echo"</script>";
                     }
                     else {
@@ -138,18 +135,76 @@
                         $resultinsert = mysqli_query($link, $sqlinsert);
                         if(!$resultinsert){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='supplier.php';";
+                            echo"window.location.href='supplier.php?save=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ບັນທຶກຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='supplier.php';";
+                            echo"window.location.href='supplier.php?save=success';";
                             echo"</script>";
                         }
                     }
                 }
+            }
+            if(isset($_GET['company'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນຊື່ບໍລິສັດຜູ້ສະໜອງ !", "info");
+                </script>';
+            }
+            if(isset($_GET['address'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນທີ່ຢູ່ຜູ້ສະໜອງ !", "info");
+                </script>';
+            }
+            if(isset($_GET['tel'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນເບີໂທຕິດຕໍ່ !", "info");
+                </script>';
+            }
+            if(isset($_GET['supplier'])=='same'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດເພີ່ມຂໍ້ມູນໄດ້ ເນື່ອງຈາກຜູ້ສະໜອງນີ້ມີຢູ່ແລ້ວ !", "error");
+                </script>';
+            }
+            if(isset($_GET['save'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດເພີ່ມຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['save'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ເພີ່ມຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+            if(isset($_GET['update'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້ ກະລຸນລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['update'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ແກ້ໄຂຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+            if(isset($_GET['del'])=='not'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ເນື່ອງຈາກຜູ້ສະໜອງນີ້ໄດ້ເຄື່ອນໄຫວການນຳເຂົ້າສິນຄ້າແລ້ວ !", "error");
+                </script>';
+            }
+            if(isset($_GET['del2'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ເນື່ອງຈາກຜູ້ສະໜອງນີ້ໄດ້ເຄື່ອນໄຫວການສັ່ງຊື້ສິນຄ້າແລ້ວ !", "error");
+                </script>';
+            }
+            if(isset($_GET['del3'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "info");
+                </script>';
+            }
+            if(isset($_GET['del3'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "info");
+                </script>';
             }
         ?>
         <div class="clearfix"></div>

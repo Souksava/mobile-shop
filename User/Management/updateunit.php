@@ -75,8 +75,7 @@
                 $unit_name = $_POST['unit_name']; 
                 if(trim($unit_name) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ຊື່ຫົວໜ່ວຍສິນຄ້າ');";
-                    echo"window.location.href='unit.php';";
+                    echo"window.location.href='unit.php?name=null';";
                     echo"</script>";
                 }
                 else {
@@ -84,14 +83,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='unit.php';";
+                            echo"window.location.href='unit.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='unit.php';";
+                            echo"window.location.href='unit.php?update=success';";
                             echo"</script>";
                         }
                     

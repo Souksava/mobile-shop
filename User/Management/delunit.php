@@ -6,8 +6,7 @@
                
                 if(mysqli_num_rows($resultck) > 0){
                     echo"<script>";
-                    echo"alert('ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ເນື່ອງຈາກຫົວໜ່ວຍສິນຄ້ານີ້ໄດ້ມີຢູ່ໃນສິນຄ້າແລ້ວ');";
-                    echo"window.location.href='unit.php';";
+                    echo"window.location.href='unit.php?del=not';";
                     echo"</script>";
                 }
                else{
@@ -17,14 +16,12 @@
                     if(!$resultdel)
                     {
                         echo"<script>";
-                        echo"alert('ລົບຂໍ້ມູນບໍ່ສຳເລັດ');";
-                        echo"window.location.href='unit.php';";
+                        echo"window.location.href='unit.php?del2=found';";
                         echo"</script>";
                     }
                     else{
                         echo"<script>";
-                        echo"alert('ລົບຂໍ້ມູນສຳເລັດ');";
-                        echo"window.location.href='unit.php';";
+                        echo"window.location.href='unit.php?del2=success';";
                         echo"</script>";
                     } 
                }

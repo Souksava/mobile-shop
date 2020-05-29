@@ -26,6 +26,7 @@
         <link rel="icon" href="../../image/<?php echo $rowshop['img_title']; ?>">
         <link rel="stylesheet" href="../../css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <body >
         <div class="header">
             <div class="container">
@@ -74,6 +75,28 @@
                 </table>
             </div>
         </div>
+        <?php
+            if(isset($_GET['rate_buy'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນເລດຊື້ !", "info");
+                </script>';
+            }
+            if(isset($_GET['rate_sell'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນເລດຂາຍ !", "info");
+                </script>';
+            }
+            if(isset($_GET['update'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['update'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ແກ້ໄຂຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+        ?>
     </body>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

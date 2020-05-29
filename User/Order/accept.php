@@ -27,6 +27,7 @@
     <link rel="icon" href="../../image/<?php echo $rowshop['img_title']; ?>">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body >
     <!-- head -->
@@ -136,6 +137,21 @@
             </tr>
             <?php
                 }
+            }
+            if(isset($_GET['del'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['del'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+            if(isset($_GET['del2'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສສາມາດລົບລາຍການນີ້ໄດ້ ເນື່ອງຈາກລາຍການນີ້ມີການອະນຸມັດແລ້ວ !", "error");
+                </script>';
             }
             ?>
             </table>

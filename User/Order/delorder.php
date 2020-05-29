@@ -11,21 +11,18 @@
                     if(!$resultdel2)
                     {
                         echo"<script>";
-                        echo"alert('ລົບຂໍ້ມູນບໍ່ສຳເລັດ');";
-                        echo"window.location.href='accept.php';";
+                        echo"window.location.href='accept.php?del=found';";
                         echo"</script>";
                     }
                     else{
                         echo"<script>";
-                        echo"alert('ລົບຂໍ້ມູນສຳເລັດ');";
-                        echo"window.location.href='accept.php';";
+                        echo"window.location.href='accept.php?del=success';";
                         echo"</script>";
                     }
                }
                else{
                     echo"<script>";
-                    echo"alert('ບໍ່ສາມາດລົບລາຍການນີ້ໄດ້ ເນື່ອງຈາກລາຍການນີ້ມີການອະນຸມັດແລ້ວ');";
-                    echo"window.location.href='accept.php';";
+                    echo"window.location.href='accept.php?del2=found';";
                     echo"</script>";
                }
             

@@ -9,20 +9,17 @@
                 $resultck3 = mysqli_query($link, $sqlck3);
                 if(mysqli_num_rows($resultck) > 0){
                     echo"<script>";
-                    echo"alert('ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ເນື່ອງຈາກພະນັກງານຄົນນີ້ໄດ້ເຄີຍທຳການສັ່ງຊື້ສິນຄ້າແລ້ວ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?order=found';";
                     echo"</script>";
                 }
                 else if(mysqli_num_rows($resultck2) > 0){
                     echo"<script>";
-                    echo"alert('ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ເນື່ອງຈາກພະນັກງານຄົນນີ້ໄດ້ເຄີຍທຳການນຳເຂົ້າສິນຄ້າແລ້ວ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?import=found';";
                     echo"</script>";
                 }
                 else if(mysqli_num_rows($resultck3) > 0){
                     echo"<script>";
-                    echo"alert('ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ເນື່ອງຈາກພະນັກງານຄົນນີ້ໄດ້ເຄີຍທຳການຂາຍສິນຄ້າແລ້ວ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?sell=found';";
                     echo"</script>";
                 }
                else{
@@ -38,14 +35,12 @@
                     if(!$resultdel)
                     {
                         echo"<script>";
-                        echo"alert('ລົບຂໍ້ມູນບໍ່ສຳເລັດ');";
-                        echo"window.location.href='employee.php';";
+                        echo"window.location.href='employee.php?del=found';";
                         echo"</script>";
                     }
                     else{
                         echo"<script>";
-                        echo"alert('ລົບຂໍ້ມູນສຳເລັດ');";
-                        echo"window.location.href='employee.php';";
+                        echo"window.location.href='employee.php?del=success';";
                         echo"</script>";
                     } 
                }

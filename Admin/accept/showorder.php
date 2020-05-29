@@ -29,6 +29,7 @@
     <link rel="icon" href="../../image/<?php echo $rowshop['img_title']; ?>">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body >
     <!-- head -->
@@ -174,14 +175,12 @@
             $result = mysqli_query($link,$sql);
             if(!$result){
                 echo"<script>";
-                echo"alert('ອະນຸມັດບໍ່ສຳເລັດ');";
-                echo"window.location.href='accept.php';";
+                echo"window.location.href='accept.php?accept=found';";
                 echo"</script>";
             }
             else {
                 echo"<script>";
-                echo"alert('ອະນຸມັດສຳເລັດ');";
-                echo"window.location.href='accept.php';";
+                echo"window.location.href='accept.php?accept=success';";
                 echo"</script>";
             }
         }
@@ -191,17 +190,16 @@
             $result = mysqli_query($link,$sql);
             if(!$result){
                 echo"<script>";
-                echo"alert('ອະນຸມັດບໍ່ສຳເລັດ');";
-                echo"window.location.href='accept.php';";
+                echo"window.location.href='accept.php?notaccept=found';";
                 echo"</script>";
             }
             else {
                 echo"<script>";
-                echo"alert('ອະນຸມັດສຳເລັດ');";
-                echo"window.location.href='accept.php';";
+                echo"window.location.href='accept.php?notaccept=success';";
                 echo"</script>";
             }
         }
+       
     ?>
       <!-- body -->
   </body>

@@ -10,15 +10,13 @@
     $resultlist = mysqli_query($link,$sqllist);
     if(!$resultlist){
         echo"<script>";
-        echo"alert('ລົບຂໍ້ມູນບໍ່ສຳເລັດ');";
-        echo"window.location.href='import2.php';";
+        echo"window.location.href='import2.php?del=found';";
         echo"</script>";
     }
     else {
         $sqlstock = "update product set qty=qty-'$qty' where pro_id='$pro_id';";
         $resultstock = mysqli_query($link,$sqlstock);
         echo"<script>";
-        echo"alert('ລົບຂໍ້ມູນສຳເລັດ');";
         echo"window.location.href='import2.php';";
         echo"</script>";
     }

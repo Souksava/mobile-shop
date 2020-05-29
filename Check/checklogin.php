@@ -13,22 +13,19 @@
          if($email == "")
          {
                  echo"<script>";
-                 echo"alert('ກະລຸນາໃສ່ອີເມວຜູ້ໃຊ້');";
-                 echo"window.location.href='../index.php';";
+                 echo"window.location.href='../index.php?email=null';";
                  echo"</script>";
          }
              else if($pass == "")
              {
                  echo"<script>";
-                 echo"alert('ກະລຸນາໃສ່ລະຫັດຜູ້ໃຊ້');";
-                 echo"window.location.href='../index.php';";
+                 echo"window.location.href='../index.php?pass=null';";
                  echo"</script>";
              }
              else if(!mysqli_num_rows($resultck))
              {
                  echo"<script>";
-                 echo"alert('ອີເມວ ຫຼື ລະຫັດຜູ້ໃຊ້ບໍ່ຖືກຕ້ອງ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ');";
-                 echo"window.location.href='../index.php';";
+                 echo"window.location.href='../index.php?login=found';";
                  echo"</script>";
              }
              else 
@@ -68,8 +65,7 @@
                              $_SESSION['ses_id'] = session_id();
                              $_SESSION['auther_id'] > 2 ;
                              echo"<script>";
-                             echo"alert('ທ່ານບໍ່ມີສິດໃຊ້ລະບົບ');";
-                             echo"window.location.href='logout.php';";
+                             echo"window.location.href='logout.php?permission=found';";
                              echo"</script>";
                          }
 

@@ -79,8 +79,7 @@
                 $brand_name = $_POST['brand_name']; 
                 if(trim($brand_name) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ຊື່ຍີ່ຫໍ້ສິນຄ້າ');";
-                    echo"window.location.href='brand.php';";
+                    echo"window.location.href='brand.php?name=null';";
                     echo"</script>";
                 }
                 else {
@@ -89,14 +88,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='brand.php';";
+                            echo"window.location.href='brand.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='brand.php';";
+                            echo"window.location.href='brand.php?update=success';";
                             echo"</script>";
                         }
                     }

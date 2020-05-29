@@ -83,14 +83,12 @@
                 $rate_sell = $_POST['rate_sell'];
                 if(trim($rate_buy) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາປ້ອນເລດຊື້');";
-                    echo"window.location.href='rate.php';";
+                    echo"window.location.href='rate.php?rate_buy=null';";
                     echo"</script>";
                 }
                 elseif(trim($rate_sell) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາປ້ອນເລດຂາຍ');";
-                    echo"window.location.href='rate.php';";
+                    echo"window.location.href='rate.php?rate_sell=null';";
                     echo"</script>";
                 }
                 else {
@@ -98,14 +96,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='rate.php';";
+                            echo"window.location.href='rate.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='rate.php';";
+                            echo"window.location.href='rate.php?update=success';";
                             echo"</script>";
                         }
                     }

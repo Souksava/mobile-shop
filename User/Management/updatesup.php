@@ -99,20 +99,17 @@
                 $email = $_POST['email'];
                 if(trim($company) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ຊື່ບໍລິສັດ');";
-                    echo"window.location.href='supplier.php';";
+                    echo"window.location.href='supplier.php?company=null';";
                     echo"</script>";
                 }
                 elseif(trim($address) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ທີ່ຕັ້ງບໍລິສັດ');";
-                    echo"window.location.href='supplier.php';";
+                    echo"window.location.href='supplier.php?address=null';";
                     echo"</script>";
                 }
                 elseif(trim($tel) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ເບີໂທຕິດຕໍ່ບໍລິສັດ');";
-                    echo"window.location.href='supplier.php';";
+                    echo"window.location.href='supplier.php?tel=null';";
                     echo"</script>";
                 }
                 else {
@@ -120,14 +117,12 @@
                     $resultupdate = mysqli_query($link,$sqlupdate);
                     if(!$resultupdate){
                         echo"<script>";
-                        echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                        echo"window.location.href='supplier.php';";
+                        echo"window.location.href='supplier.php?update=found';";
                         echo"</script>";
                     }
                     else {
                         echo"<script>";
-                        echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                        echo"window.location.href='supplier.php';";
+                        echo"window.location.href='supplier.php?update=success';";
                         echo"</script>";
                     }               
                 }

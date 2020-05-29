@@ -35,6 +35,7 @@
         <link rel="icon" href="../../image/<?php echo $rowshop['img_title']; ?>">
         <link rel="stylesheet" href="../../css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <body>
         <div class="header">
             <div class="container">
@@ -164,20 +165,17 @@
                 $price = $_POST['price'];
                 if(trim($pro_id) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ລະຫັດສິນຄ້າ');";
-                    echo"window.location.href='frmOrder2.php';";
+                    echo"window.location.href='frmOrder2.php?pro_id=null';";
                     echo"</script>";
                 }
                 else if(trim($qty) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ຈຳນວນ');";
-                    echo"window.location.href='frmOrder2.php';";
+                    echo"window.location.href='frmOrder2.php?qty=null';";
                     echo"</script>";
                 }
                 else if(trim($price) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາປ້ອນລາຄາ');";
-                    echo"window.location.href='frmOrder2.php';";
+                    echo"window.location.href='frmOrder2.php?price=null';";
                     echo"</script>";
                 }
                 else {
@@ -204,14 +202,12 @@
                 $amount = $_POST['amount'];
                 if(trim($sup_id) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກຜູ້ສະໜອງ');";
-                    echo"window.location.href='frmOrder2.php';";
+                    echo"window.location.href='frmOrder2.php?sup_id=null';";
                     echo"</script>";
                 }
                 else if(trim($amount) == "" or trim($amount) == ""){
                     echo"<script>";
-                    echo"alert('ເພີ່ມລາຍການສັ່ງຊື້');";
-                    echo"window.location.href='frmOrder2.php';";
+                    echo"window.location.href='frmOrder2.php?amount=null';";
                     echo"</script>";
                 }
                 else {
@@ -223,8 +219,7 @@
                     $resultsave = mysqli_query($link,$sqlsave);
                     if(!$resultsave){
                         echo"<script>";
-                        echo"alert('ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້');";
-                        echo"window.location.href='frmOrder2.php';";
+                        echo"window.location.href='frmOrder2.php?save=found';";
                         echo"</script>";
                     }
                     else {
@@ -232,21 +227,59 @@
                         $resultsave2 = mysqli_query($link,$sqlsave2);
                         if(!$resultsave2){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='frmOrder2.php';";
+                            echo"window.location.href='frmOrder2.php?save=found';";
                             echo"</script>";
                         }
                         else {
                             $sqlclear = "delete from listorderdetail where emp_id='$emp_id';";
                             $resultclear = mysqli_query($link,$sqlclear);
                             echo"<script>";
-                            echo"alert('ບັນທຶກການສັ່ງຊື້ສຳເລັດ');";
-                            echo"window.location.href='frmOrder2.php';";
+                            echo"window.location.href='frmOrder2.php?save=success';";
                             echo"</script>";
                         }
 
                     }
                 }
+            }
+            if(isset($_GET['pro_id'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນລະຫັດສິນຄ້າ !", "info");
+                </script>';
+            }
+            if(isset($_GET['qty'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນຈຳນວນສິນຄ້າ !", "info");
+                </script>';
+            }
+            if(isset($_GET['price'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນລາຄາ !", "info");
+                </script>';
+            }
+            if(isset($_GET['sup_id'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາເລືອກຜູ້ສະໜອງສິນຄ້າ !", "info");
+                </script>';
+            }
+            if(isset($_GET['amount'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາເພີ່ມລາຍການສິນຄ້າ !", "info");
+                </script>';
+            }
+            if(isset($_GET['save'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດບັນທຶກການສັ່ງຊື້ໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['save'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ບັນທຶກການສັ່ງຊື້ສຳເລັດ !", "success");
+                </script>';
+            }
+            if(isset($_GET['del'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ລົບຂໍ້ມູນບໍ່ສຳເລັດ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
             }
         ?>
     </body>

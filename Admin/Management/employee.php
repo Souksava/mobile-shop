@@ -26,6 +26,7 @@
         <link rel="icon" href="../../image/<?php echo $rowshop['img_title']; ?>">
         <link rel="stylesheet" href="../../css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <body >
         <div class="header">
             <div class="container">
@@ -169,63 +170,47 @@
                 }
                 if(trim($emp_id) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ລະຫັດພະນັກງານ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?emp_id=null';";
                     echo"</script>";
                 }
                 elseif(trim($emp_name) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ຊື່ພະນັກງານ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?emp_name=null';";
                     echo"</script>";
                 }
                 elseif(trim($gender) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກເພດ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?gender=null';";
                     echo"</script>";
                 }
                 elseif(trim($tel) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ເບີເໂທລະສັບ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?tel=null';";
                     echo"</script>";
                 }
                 elseif(trim($status) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກສະຖານະຜູ້ໃຊ້ລະບົບ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?status=null';";
                     echo"</script>";
                 }
                 elseif(trim($work_start) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກວັນທີເຂົ້າການ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?work_start=null';";
                     echo"</script>";
                 }
                 else {
                     $sqlckid = "select * from employees where emp_id='$emp_id';";
                     $resultckid = mysqli_query($link,$sqlckid);
-                    $sqlckname = "select * from employees where emp_name='$emp_name';";
-                    $resultckname = mysqli_query($link,$sqlckname);
                     $sqlemail = "select * from employees where email='$email';";
                     $resultemail = mysqli_query($link,$sqlemail);
                     if(mysqli_num_rows($resultckid) > 0){
                         echo"<script>";
-                        echo"alert('ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້ ເນື່ອງຈາກລະຫັດຜູ້ໃຊ້ນີ້ມີຢູ່ແລ້ວ ກະລຸນາໃສ່ລະຫັດທີ່ແຕກຕ່າງ');";
-                        echo"window.location.href='employee.php';";
-                        echo"</script>";
-                    }
-                    elseif (mysqli_num_rows($resultckname) > 0) {
-                        echo"<script>";
-                        echo"alert('ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້ ເນື່ອງຈາກຊື່ຜູ້ໃຊ້ນີ້ມີຢູ່ແລ້ວ ກະລຸນາໃສ່ຊື່ທີ່ແຕກຕ່າງ');";
-                        echo"window.location.href='employee.php';";
+                        echo"window.location.href='employee.php?employee=same';";
                         echo"</script>";
                     }
                     elseif (mysqli_num_rows($resultemail) > 0) {
                         echo"<script>";
-                        echo"alert('ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້ ເນື່ອງຈາກອີ່ເມວຜູ້ໃຊ້ນີ້ມີຢູ່ແລ້ວ ກະລຸນາໃສ່ອີເມວທີ່ແຕກຕ່າງ');";
-                        echo"window.location.href='employee.php';";
+                        echo"window.location.href='employee.php?emailsame=same';";
                         echo"</script>";
                     }
                     else {
@@ -239,19 +224,113 @@
                         $resultinsert = mysqli_query($link, $sqlinsert);
                         if(!$resultinsert){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='employee.php';";
+                            echo"window.location.href='employee.php?save=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ບັນທຶກຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='employee.php';";
+                            echo"window.location.href='employee.php?save=success';";
                             echo"</script>";
                         }
                     }
                 }
             }
+            if(isset($_GET['emp_id'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນລະຫັດຜູ້ໃຊ້ລະບົບ !", "info");
+                </script>';
+            }
+            if(isset($_GET['emp_name'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນຊື່ຜູ້ໃຊ້ລະບົບ !", "info");
+                </script>';
+            }
+            if(isset($_GET['gender'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາເລືອກເພດ !", "info");
+                </script>';
+            }
+            if(isset($_GET['tel'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນເບີໂທລະສັບ !", "info");
+                </script>';
+            }
+            if(isset($_GET['status'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາເລືອກສະຖານະຜູ້ໃຊ້ລະບົບ !", "info");
+                </script>';
+            }
+            if(isset($_GET['work_start'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາເລືອກວັນທີເລີ່ມວຽກ !", "info");
+                </script>';
+            }
+            if(isset($_GET['employee'])=='same'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້ ເນື່ອງຈາກລະຫັດຜູ້ໃຊ້ນີ້ມີຢູ່ແລ້ວ ກະລຸນາໃສ່ລະຫັດທີ່ແຕກຕ່າງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['emailsame'])=='same'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້ ເນື່ອງຈາກອີ່ເມວຜູ້ໃຊ້ນີ້ມີຢູ່ແລ້ວ ກະລຸນາໃສ່ອີເມວທີ່ແຕກຕ່າງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['save'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບັນທຶກຂໍ້ມູນບໍ່ສຳເລັດ !", "error");
+                </script>';
+            }
+            if(isset($_GET['save'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ບັນທຶກຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+            if(isset($_GET['update'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ແກ້ໄຂຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+            if(isset($_GET['update'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ແກ້ໄຂຂໍ້ມູນບໍ່ສຳເລັດ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['order'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ເນື່ອງຈາກພະນັກງານຄົນນີ້ໄດ້ເຄີຍທຳການສັ່ງຊື້ສິນຄ້າແລ້ວ !", "error");
+                </script>';
+            }
+            if(isset($_GET['import'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ເນື່ອງຈາກພະນັກງານຄົນນີ້ໄດ້ເຄີຍທຳການນຳເຂົ້າສິນຄ້າແລ້ວ !", "error");
+                </script>';
+            }
+            if(isset($_GET['sell'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ເນື່ອງຈາກພະນັກງານຄົນນີ້ໄດ້ເຄີຍທຳການຂາຍສິນຄ້າແລ້ວ !", "error");
+                </script>';
+            }
+            if(isset($_GET['del'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ລົບຂໍ້ມູນບໍ່ສຳເລັດ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['del'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+            if(isset($_GET['update'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['update'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ແກ້ໄຂຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+            
         ?>
         <div class="clearfix"></div>
         <div class="container font14">

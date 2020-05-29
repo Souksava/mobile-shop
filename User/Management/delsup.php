@@ -7,14 +7,12 @@
                 $resultck2 = mysqli_query($link, $sqlck2);
                 if(mysqli_num_rows($resultck) > 0){
                     echo"<script>";
-                    echo"alert('ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ເນື່ອງຈາກຜູ້ສະໜອງນີ້ໄດ້ເຄື່ອນໄຫວການນຳເຂົ້າສິນຄ້າແລ້ວ');";
-                    echo"window.location.href='supplier.php';";
+                    echo"window.location.href='supplier.php?del=found';";
                     echo"</script>";
                 }
                 else if(mysqli_num_rows($resultck2) > 0){
                     echo"<script>";
-                    echo"alert('ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ເນື່ອງຈາກຜູ້ສະໜອງນີ້ໄດ້ເຄື່ອນໄຫວການສັ່ງຊື້ສິນຄ້າແລ້ວ');";
-                    echo"window.location.href='supplier.php';";
+                    echo"window.location.href='supplier.php?del2=found';";
                     echo"</script>";
                 }
                else{
@@ -23,14 +21,12 @@
                     if(!$resultdel)
                     {
                         echo"<script>";
-                        echo"alert('ລົບຂໍ້ມູນບໍ່ສຳເລັດ');";
-                        echo"window.location.href='supplier.php';";
+                        echo"window.location.href='supplier.php?del3=found';";
                         echo"</script>";
                     }
                     else{
                         echo"<script>";
-                        echo"alert('ລົບຂໍ້ມູນສຳເລັດ');";
-                        echo"window.location.href='supplier.php';";
+                        echo"window.location.href='supplier.php?del3=success';";
                         echo"</script>";
                     } 
                }

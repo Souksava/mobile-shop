@@ -26,6 +26,7 @@
         <link rel="icon" href="../../image/<?php echo $rowshop['img_title'];?>">
         <link rel="stylesheet" href="../../css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <body >
         <div class="header">
             <div class="container">
@@ -92,8 +93,7 @@
                 $brand_name = $_POST['brand_name']; 
                 if(trim($brand_name) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ຊື່ຍີ່ຫໍ້');";
-                    echo"window.location.href='brand.php';";
+                    echo"window.location.href='brand.php?name=null';";
                     echo"</script>";
                 }
                 else {
@@ -101,8 +101,7 @@
                     $resultckid = mysqli_query($link,$sqlckid);
                     if(mysqli_num_rows($resultckid) > 0){
                         echo"<script>";
-                        echo"alert('ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້ ເນື່ອງຈາກຍີ່ຫໍ້ສິນຄ້ານີ້ມີຢູ່ແລ້ວ');";
-                        echo"window.location.href='brand.php';";
+                        echo"window.location.href='brand.php?brand=same';";
                         echo"</script>";
                     }
                     else {
@@ -116,19 +115,63 @@
                         $resultinsert = mysqli_query($link, $sqlinsert);
                         if(!$resultinsert){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='brand.php';";
+                            echo"window.location.href='brand.php?save=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ບັນທຶກຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='brand.php';";
+                            echo"window.location.href='brand.php?save=success';";
                             echo"</script>";
                         }
                     }
                 }
             }
+            if(isset($_GET['name'])=='null'){
+                echo'<script type="text/javascript">
+                swal("", "ກະລຸນາປ້ອນຊື່ຍີ່ຫໍ້ !", "info");
+                </script>';
+            }
+            if(isset($_GET['brand'])=='same'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດເພີ່ມຍີ່ຫໍ້ໄດ້ ເນື່ອງຈາກຍີຫໍ້ນີ້ມີຢູ່ແລ້ວ !", "info");
+                </script>';
+            }
+            if(isset($_GET['save'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດເພີ່ມຂໍ້ມູນໄດ້ ເນື່ອງຈາກຍີ່ຫໍ້ນີ້ມີຢູ່ແລ້ວ !", "error");
+                </script>';
+            }
+            if(isset($_GET['save'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ບັນທຶກຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+            if(isset($_GET['del'])=='not'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ເນື່ອງຈາກຊື່ແບນນີ້ມີຢູ່ໃນສິນຄ້າແລ້ວ !", "error");
+                </script>';
+            }
+            if(isset($_GET['del2'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ !", "error");
+                </script>';
+            }
+            if(isset($_GET['del2'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+            if(isset($_GET['update'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['update'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ແກ້ໄຂຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+
         ?>
         <div class="clearfix"></div>
         <div class="container font14">

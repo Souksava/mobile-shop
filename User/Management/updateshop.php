@@ -120,32 +120,22 @@
                 }
                 elseif(trim($name) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ຊື່ຮ້ານ');";
-                    echo"window.location.href='shop.php';";
+                    echo"window.location.href='shop.php?name=null';";
                     echo"</script>";
                 }
                 elseif(trim($address) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ທີ່ຕັ້ງຮ້ານ');";
-                    echo"window.location.href='shop.php';";
+                    echo"window.location.href='shop.php?address=null';";
                     echo"</script>";
                 }
                 elseif(trim($tel) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ເບີເໂທລະສັບ');";
-                    echo"window.location.href='shop.php';";
+                    echo"window.location.href='shop.php?tel=null';";
                     echo"</script>";
                 }
                 elseif(trim($email) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ອີເມວຮ້ານ');";
-                    echo"window.location.href='shop.php';";
-                    echo"</script>";
-                }
-                elseif(trim($date_shop) == ""){
-                    echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ວັນສ້າງຕັ້ງຮ້ານ');";
-                    echo"window.location.href='shop.php';";
+                    echo"window.location.href='shop.php?email=null';";
                     echo"</script>";
                 }
                 else {
@@ -167,14 +157,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='shop.php';";
+                            echo"window.location.href='shop.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='shop.php';";
+                            echo"window.location.href='shop.php?update=success';";
                             echo"</script>";
                         }
                     }
@@ -196,14 +184,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='shop.php';";
+                            echo"window.location.href='shop.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='shop.php';";
+                            echo"window.location.href='shop.php?update=success';";
                             echo"</script>";
                         }
                     }
@@ -239,14 +225,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='shop.php';";
+                            echo"window.location.href='shop.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='shop.php';";
+                            echo"window.location.href='shop.php?update=success';";
                             echo"</script>";
                         }
                     }
@@ -255,14 +239,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='shop.php';";
+                            echo"window.location.href='shop.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='shop.php';";
+                            echo"window.location.href='shop.php?update=success';";
                             echo"</script>";
                         }
                     }

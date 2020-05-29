@@ -14,6 +14,7 @@
     <link rel="icon" href="image/<?php echo $row['img_title']; ?>">
     <title>ເຂົ້າສູ່ລະບົບ</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link href="css/Style.css" type="text/css" rel="stylesheet" />
   </head>
   <body>
@@ -42,6 +43,28 @@
                 </div>
           </form>
         </div>
+          <?php
+          if(isset($_GET['email'])=='null'){
+            echo'<script type="text/javascript">
+            swal("", "ກະລຸນາປ້ອນອີເມວ !", "info");
+            </script>';
+          }
+          if(isset($_GET['pass'])=='null'){
+            echo'<script type="text/javascript">
+            swal("", "ກະລຸນາປ້ອນລະຫັດຜ່ານ !", "info");
+            </script>';
+          }
+          if(isset($_GET['login'])=='found'){
+            echo'<script type="text/javascript">
+            swal("", "ອີເມວ ຫຼື ລະຫັດຜູ້ໃຊ້ບໍ່ຖືກຕ້ອງ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+            </script>';
+          }
+          if(isset($_GET['permission'])=='found'){
+            echo'<script type="text/javascript">
+            swal("", "ທ່ານບໍ່ມີສິດໃຊ້ລະບົບ !", "error");
+            </script>';
+          }
+        ?>
   </body>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

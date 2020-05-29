@@ -6,13 +6,11 @@
     if(!$resultdel2)
     {
         echo"<script>";
-        echo"alert('ລົບຂໍ້ມູນບໍ່ສຳເລັດ');";
-        echo"window.location.href='frmorder2.php';";
+        echo"window.location.href='frmorder2.php?del=found';";
         echo"</script>";
     }
     else{
         echo"<script>";
-        echo"alert('ລົບຂໍ້ມູນສຳເລັດ');";
         echo"window.location.href='frmorder2.php';";
         echo"</script>";
     }

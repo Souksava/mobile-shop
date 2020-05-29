@@ -162,38 +162,32 @@
                 }
                 if(trim($emp_id) == ""){
                     echo"<script>";
-                    echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?emp_id=null';";
                     echo"</script>";
                 }
                 elseif(trim($emp_name) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ຊື່ພະນັກງານ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?emp_name=null';";
                     echo"</script>";
                 }
                 elseif(trim($gender) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກເພດ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?gender=null';";
                     echo"</script>";
                 }
                 elseif(trim($tel) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາໃສ່ເບີເໂທລະສັບ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?tel=null';";
                     echo"</script>";
                 }
                 elseif(trim($status) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກສະຖານະຜູ້ໃຊ້ລະບົບ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?status=null';";
                     echo"</script>";
                 }
                 elseif(trim($work_start) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາເລືອກວັນທີເຂົ້າການ');";
-                    echo"window.location.href='employee.php';";
+                    echo"window.location.href='employee.php?work_start=null';";
                     echo"</script>";
                 }
                 else {
@@ -202,14 +196,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='employee.php';";
+                            echo"window.location.href='employee.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='employee.php';";
+                            echo"window.location.href='employee.php?update=success';";
                             echo"</script>";
                         }
                     }
@@ -235,14 +227,12 @@
                         $resultupdate = mysqli_query($link,$sqlupdate);
                         if(!$resultupdate){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດແກ້ໄຂຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='employee.php';";
+                            echo"window.location.href='employee.php?update=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ແກ້ໄຂຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='employee.php';";
+                            echo"window.location.href='employee.php?update=success';";
                             echo"</script>";
                         }
                     }
