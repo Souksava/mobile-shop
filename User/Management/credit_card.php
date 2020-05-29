@@ -103,20 +103,17 @@
                 $ac_name = $_POST['ac_name']; 
                 if(trim($card_id) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາປ້ອນຊື່ບັດເຄດິດ');";
-                    echo"window.location.href='credit_card.php';";
+                    echo"window.location.href='credit_card.php?card_id=null';";
                     echo"</script>";
                 }
                 if(trim($ac_no) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາປ້ອນເລກທີບັນຊີ');";
-                    echo"window.location.href='credit_card.php';";
+                    echo"window.location.href='credit_card.php?ac_no=null';";
                     echo"</script>";
                 }
                 if(trim($ac_name) == ""){
                     echo"<script>";
-                    echo"alert('ກະລຸນາປ້ອນຊື່ບັນຊີ');";
-                    echo"window.location.href='credit_card.php';";
+                    echo"window.location.href='credit_card.php'?ac_name=null;";
                     echo"</script>";
                 }
                 else {
@@ -124,8 +121,7 @@
                     $resultckid = mysqli_query($link,$sqlckid);
                     if(mysqli_num_rows($resultckid) > 0){
                         echo"<script>";
-                        echo"alert('ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້ ເນື່ອງຊື່ບັນຊີນີ້ມີຢູ່ແລ້ວ');";
-                        echo"window.location.href='credit_card.php';";
+                        echo"window.location.href='credit_card.php?credit=same';";
                         echo"</script>";
                     }
                     else {
@@ -139,14 +135,12 @@
                         $resultinsert = mysqli_query($link, $sqlinsert);
                         if(!$resultinsert){
                             echo"<script>";
-                            echo"alert('ບໍ່ສາມາດບັນທຶກຂໍ້ມູນໄດ້');";
-                            echo"window.location.href='credit_card.php';";
+                            echo"window.location.href='credit_card.php?save=found';";
                             echo"</script>";
                         }
                         else {
                             echo"<script>";
-                            echo"alert('ບັນທຶກຂໍ້ມູນສຳເລັດ');";
-                            echo"window.location.href='credit_card.php';";
+                            echo"window.location.href='credit_card.php?save=success';";
                             echo"</script>";
                         }
                     }
@@ -190,6 +184,16 @@
             if(isset($_GET['update'])=='success'){
                 echo'<script type="text/javascript">
                 swal("", "ແກ້ໄຂຂໍ້ມູນສຳເລັດ !", "success");
+                </script>';
+            }
+            if(isset($_GET['del'])=='found'){
+                echo'<script type="text/javascript">
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
+                </script>';
+            }
+            if(isset($_GET['del'])=='success'){
+                echo'<script type="text/javascript">
+                swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "success");
                 </script>';
             }
         ?>

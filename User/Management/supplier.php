@@ -198,12 +198,12 @@
             }
             if(isset($_GET['del3'])=='found'){
                 echo'<script type="text/javascript">
-                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "info");
+                swal("", "ບໍ່ສາມາດລົບຂໍ້ມູນໄດ້ ກະລຸນາລອງໃໝ່ອີກຄັ້ງ !", "error");
                 </script>';
             }
             if(isset($_GET['del3'])=='success'){
                 echo'<script type="text/javascript">
-                swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "info");
+                swal("", "ລົບຂໍ້ມູນສຳເລັດ !", "success");
                 </script>';
             }
         ?>

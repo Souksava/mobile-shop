@@ -84,7 +84,7 @@
                     <b>ຫົວໜ່ວຍ</b>
                 </a>
             </div>
-            <div style="width: 33%;float: left;" align="center"><br><br>
+            <div style="width: 33%;float: left;" align="center"><br>
                 <a href="brand.php" class="font12">
                      <img src="../../icon/brand.ico" width="60px" class="img-responsive" ><br>
                     <b> ຍີ່ຫໍ້</b>
