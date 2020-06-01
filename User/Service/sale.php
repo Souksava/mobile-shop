@@ -15,6 +15,14 @@
     $resultshop = mysqli_query($link,$sqlshop);
     $rowshop = mysqli_fetch_array($resultshop,MYSQLI_ASSOC);
     $emp_id = $_SESSION['emp_id'];
+    $sqlbaht = "select * from rate where rate_id='THB';";
+    $resultbaht = mysqli_query($link,$sqlbaht);
+    $rowbaht = mysqli_fetch_array($resultbaht,MYSQLI_ASSOC);
+    $baht = $rowbaht['rate_buy'];
+    $sqlusd = "select * from rate where rate_id='USD';";
+    $resultusd = mysqli_query($link,$sqlusd);
+    $rowusd = mysqli_fetch_array($resultusd,MYSQLI_ASSOC);
+    $usd = $rowusd['rate_buy'];
 ?>
 <!Doctype html>
 <html>
@@ -200,6 +208,12 @@
                     </div>
                     <div class="col-md-12">
                         <br><h4 style="color: #CE3131;"><?php echo number_format($rowsell['amount'],2) ?> ກີບ</h4> 
+                    </div>
+                    <div class="col-md-12 ">
+                        <h4 style="color: #7E7C7C;"><?php echo number_format($rowsell['amount']/$baht,2) ?> THB</h4>
+                    </div>
+                    <div class="col-md-12 ">
+                        <h4 style="color: #7E7C7C;"><?php echo number_format($rowsell['amount']/$usd,2) ?> USD</h4>
                     </div>
                 </div>
             </div>

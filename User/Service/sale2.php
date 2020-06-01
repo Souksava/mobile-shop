@@ -16,6 +16,14 @@
     $resultshop = mysqli_query($link,$sqlshop);
     $rowshop = mysqli_fetch_array($resultshop,MYSQLI_ASSOC);
     $emp_id = $_SESSION['emp_id'];
+    $sqlbaht = "select * from rate where rate_id='THB';";
+    $resultbaht = mysqli_query($link,$sqlbaht);
+    $rowbaht = mysqli_fetch_array($resultbaht,MYSQLI_ASSOC);
+    $baht = $rowbaht['rate_buy'];
+    $sqlusd = "select * from rate where rate_id='USD';";
+    $resultusd = mysqli_query($link,$sqlusd);
+    $rowusd = mysqli_fetch_array($resultusd,MYSQLI_ASSOC);
+    $usd = $rowusd['rate_buy'];
 ?>
 <!Doctype html>
 <html>
@@ -239,6 +247,8 @@
                                         </div><br>
                                         <div class="col-md-12" align="right">
                                             <br><h4 style="color: #CE3131;"> <?php echo number_format($newamount,2); ?> ກີບ</h4>
+                                                <h4 style="color: #7E7C7C;"><?php echo number_format($newamount/$baht,2) ?> THB</h4>
+                                                <h4 style="color: #7E7C7C;"><?php echo number_format($newamount/$usd,2) ?> USD</h4>
                                             <?php 
                                                 if($cupon_price == 0 or $cupon_price == ""){
                                                     echo"<label style='color: #7E7C7C;font-size: 12px;'>* ບໍ່ມີຄູປ໋ອງສ່ວນລົດ</label>";

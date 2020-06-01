@@ -15,6 +15,14 @@
     $resultshop = mysqli_query($link,$sqlshop);
     $rowshop = mysqli_fetch_array($resultshop,MYSQLI_ASSOC);
     $emp_id = $_SESSION['emp_id'];
+    $sqlbaht = "select * from rate where rate_id='THB';";
+    $resultbaht = mysqli_query($link,$sqlbaht);
+    $rowbaht = mysqli_fetch_array($resultbaht,MYSQLI_ASSOC);
+    $baht = $rowbaht['rate_buy'];
+    $sqlusd = "select * from rate where rate_id='USD';";
+    $resultusd = mysqli_query($link,$sqlusd);
+    $rowusd = mysqli_fetch_array($resultusd,MYSQLI_ASSOC);
+    $usd = $rowusd['rate_buy'];
 ?>
 <!Doctype html>
 <html>
@@ -87,6 +95,12 @@
                     <div class="col-md-12">
                         <br> <h4 style="color: #CE3131;"><?php echo number_format($rowsell['amount'],2) ?> ກີບ</h4> 
                     </div>
+                    <div class="col-md-12 ">
+                        <h4 style="color: #7E7C7C;"><?php echo number_format($rowsell['amount']/$baht,2) ?> THB</h4>
+                    </div>
+                    <div class="col-md-12 ">
+                        <h4 style="color: #7E7C7C;"><?php echo number_format($rowsell['amount']/$usd,2) ?> USD</h4>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 font12">
@@ -114,6 +128,7 @@
                                                     <div class="col-xs-12 col-sm-6">
                                                         ອັດຕາແລກປ່ຽນ<br>
                                                         <p style="font-size: 12px;">
+                                                            ຊື້<br>
                                                             <?php 
                                                                 $sqlrate = "select * from rate where rate_id !='LAK';";
                                                                 $resultrate = mysqli_query($link,$sqlrate);
@@ -124,7 +139,15 @@
                                                         </p>
                                                     </div>
                                                     <div align="right" class="col-xs-12 col-sm-6">
-                                                        ເລກທີບິນ: <?php echo $bill;?>
+                                                        ເລກທີບິນ: <?php echo $bill;?><br>
+                                                        ຂາຍ<br>
+                                                            <?php 
+                                                                $sqlrate3 = "select * from rate where rate_id !='LAK';";
+                                                                $resultrate3 = mysqli_query($link,$sqlrate3);
+                                                                while($rowrate3 = mysqli_fetch_array($resultrate3,MYSQLI_ASSOC)){
+                                                                    echo number_format($rowrate3['rate_sell'],2);echo"&nbsp;&nbsp;&nbsp;"; echo $rowrate3['rate_id'];echo"<br>";
+                                                                }
+                                                            ?> 
                                                     </div>
                                                 </div>
                                                 <?php

@@ -46,6 +46,14 @@ function ShowData(){
 }   
 function ShowData2(){
         require '../../ConnectDB/connectDB.php';
+        $sqlbaht = "select * from rate where rate_id='THB';";
+        $resultbaht = mysqli_query($link,$sqlbaht);
+        $rowbaht = mysqli_fetch_array($resultbaht,MYSQLI_ASSOC);
+        $baht = $rowbaht['rate_buy'];
+        $sqlusd = "select * from rate where rate_id='USD';";
+        $resultusd = mysqli_query($link,$sqlusd);
+        $rowusd = mysqli_fetch_array($resultusd,MYSQLI_ASSOC);
+        $usd = $rowusd['rate_buy'];
         $emp_id = $_SESSION['emp_id'];
         $sqlsell = "select max(sell_id) as sell_id from sell where emp_id='$emp_id';";
         $resultsell = mysqli_query($link,$sqlsell);
@@ -68,6 +76,8 @@ function ShowData2(){
                 <div align="right" style="font-size: 10px;">
                     <b style="font-size: 10px;">ຍອມລວມ (ລວມພາສີມູນຄ່າເພີ່ມ) </b><br>
                     <b align="right" style="font-size: 16px;">'.number_format($amount,2).' ກີບ</b><br>
+                    <b align="right" style="font-size: 14px;">'.number_format($amount/$baht,2).' THB</b><br>
+                    <b align="right" style="font-size: 14px;">'.number_format($amount/$usd,2).' USD</b><br>
                     <label style="font-size: 6px;">ຄູປ໋ອງສ່ວນລົດ: '.number_format($cupon_price,2).' ກີບ</label> <br>  
                     <label style="font-size: 6px;">ສ່ວນຫຼຸດພິເສດ: '.number_format($discount,2).' ກີບ</label>  <br>
                     <label style="font-size: 6px;">ສ່ວນລົດລູກຄ້າສະມາຊິກ: '.number_format($cus_discount,2).' ກີບ</label>                   

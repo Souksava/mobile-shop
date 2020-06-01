@@ -23,6 +23,14 @@
     $rowsell = mysqli_fetch_array($resultsell,MYSQLI_ASSOC);
     $sqlseen = "update sell set seen1='SEEN' where sell_id='$sell_id';";
     $resultsenn = mysqli_query($link,$sqlseen);
+    $sqlbaht = "select * from rate where rate_id='THB';";
+    $resultbaht = mysqli_query($link,$sqlbaht);
+    $rowbaht = mysqli_fetch_array($resultbaht,MYSQLI_ASSOC);
+    $baht = $rowbaht['rate_buy'];
+    $sqlusd = "select * from rate where rate_id='USD';";
+    $resultusd = mysqli_query($link,$sqlusd);
+    $rowusd = mysqli_fetch_array($resultusd,MYSQLI_ASSOC);
+    $usd = $rowusd['rate_buy'];
 ?>
 <!Doctype html>
 <html>
@@ -114,6 +122,8 @@
                     </div>
                     <div class="col-md-12">
                         <br><h4 style="color: #CE3131;"><?php echo number_format($rowsell['amount'],2) ?> ກີບ</h4> 
+                        <h4 style="color: #7E7C7C;"><?php echo number_format($rowsell['amount']/$baht,2) ?> THB</h4>
+                                                <h4 style="color: #7E7C7C;"><?php echo number_format($rowsell['amount']/$usd,2) ?> USD</h4>
                         <label style="color: #7E7C7C;font-size: 12px;">ຄູປ໋ອງສ່ວນລົດ: <?php echo number_format($rowsell['cupon_price'],2); ?> ກີບ</label><br>              
                         <label style="color: #7E7C7C;font-size: 12px;">ສ່ວນຫຼຸດພິເສດ: <?php echo number_format($rowsell['discount'],2); ?> ກີບ</label><br>                  
                         <label style="color: #7E7C7C;font-size: 12px;">ສ່ວນລົດລູກຄ້າສະມາຊິກ: <?php echo number_format($rowsell['cus_discount'],2); ?> ກີບ</label>                   
